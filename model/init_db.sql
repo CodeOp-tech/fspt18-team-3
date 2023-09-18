@@ -17,7 +17,7 @@ CREATE TABLE users (
     baby_name VARCHAR(255),
     creation_date DATE NOT NULL,
     weeks_pregnant INT,
-    photo_url VARCHAR(255)
+    photo_url VARCHAR(255) 
 );
 
 
