@@ -792,37 +792,319 @@ INSERT INTO weeks_symptoms (week_id, symptom_id)
         VALUES ( 15, 26);
 /*---------------------------------------WEEK 18-----------------------------------*/
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 17, 28);
+        VALUES ( 16, 28);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 17, 46);
+        VALUES ( 16, 46);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 17, 26);
+        VALUES ( 16, 26);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 16, 43);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 16, 47);
+/*---------------------------------------WEEK 19-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 17, 42);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 17, 37);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 17, 20);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
         VALUES ( 17, 43);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 17, 47);
-/*---------------------------------------WEEK 19-----------------------------------*/
+        VALUES ( 17, 28);
+/*---------------------------------------WEEK 20-----------------------------------*/
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 18, 42);
+        VALUES ( 18, 32);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 18, 34);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
         VALUES ( 18, 37);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 18, 20);
+        VALUES ( 18, 39);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 18, 43);
+        VALUES ( 18, 36);
+/*---------------------------------------WEEK 21-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 19, 37);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 18, 28);
-/*---------------------------------------WEEK 20-----------------------------------*/
-INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 2, 3);
+        VALUES ( 19, 31);
 
 INSERT INTO weeks_symptoms (week_id, symptom_id)
-        VALUES ( 2, 3);
+        VALUES ( 19, 49);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 19, 50);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 19, 26);
+/*---------------------------------------WEEK 22-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 20, 31);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 20, 49);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 20, 51);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 20, 52);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 20, 53);
+/*---------------------------------------WEEK 23-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 21, 54);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 21, 26);
+/*---------------------------------------WEEK 24-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 22, 55);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 22, 20);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 22, 17);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 22, 28);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 22, 26);
+/*---------------------------------------WEEK 25-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 23, 57);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 23, 32);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 23, 31);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 23, 26);
+/*---------------------------------------WEEK 26-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 24, 52);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 24, 58);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 24, 59);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 24, 41);
+/*---------------------------------------WEEK 27-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 25, 52);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 25, 32);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 25, 23);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 25, 60);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 25, 61);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 25, 26);
+/*---------------------------------------WEEK 28-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 26, 48);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 26, 62);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 26, 44);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 26, 58);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 26, 63);
+/*---------------------------------------WEEK 29-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 27, 64);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 27, 8);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 27, 26);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 27, 62);
+/*---------------------------------------WEEK 30-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 28, 58);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 28, 65);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 28, 15);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 28, 62);
+/*---------------------------------------WEEK 31-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 29, 66);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 29, 67);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 29, 68);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 29, 65);
+/*---------------------------------------WEEK 32-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 30, 26);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 30, 15);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 30, 39);
+/*---------------------------------------WEEK 33-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 31, 9);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 31, 58);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 31, 72);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 31, 73);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 31, 65);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 31, 53);
+/*---------------------------------------WEEK 34-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 32, 74);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 32, 75);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 32, 36);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 32, 32);
+/*---------------------------------------WEEK 35-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 33, 71);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 33, 17);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 33, 36);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 33, 76);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 33, 31);
+/*---------------------------------------WEEK 36-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 34, 71);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 34, 58);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 34, 17);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 34, 76);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 34, 77);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 34, 36);
+/*---------------------------------------WEEK 37-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 35, 78);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 35, 62);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 35, 79);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 35, 80);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 35, 81);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 35, 82);
+/*---------------------------------------WEEK 38-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 36, 71);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 36, 78);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 36, 36);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 36, 79);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 36, 82);
+/*---------------------------------------WEEK 39-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 37, 83);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 37, 84);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 37, 85);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 37, 86);
+/*---------------------------------------WEEK 40-----------------------------------*/
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 38, 80);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 38, 82);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 38, 84);
+
+INSERT INTO weeks_symptoms (week_id, symptom_id)
+        VALUES ( 38, 85);   
