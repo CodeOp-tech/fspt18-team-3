@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import logo_babybump from "./assets/logo_babybump.png";
+import "./App.css";
+import PregnancyForm from "./components/PregnancyForm/PregnancyForm";
+import WeekView from "./components/WeekView/WeekView";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a>
+          <img src={logo_babybump} className="logo" alt="App logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Baby Bump</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Descubre semana a semana cómo crece tu bebé y diviértete en esta etapa
+          tan bonita
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <PregnancyForm />
+      <WeekView />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
