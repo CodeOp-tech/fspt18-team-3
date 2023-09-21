@@ -1,0 +1,26 @@
+.info-weeks-view {
+  background-color: #eff6fd;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.logo {
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #8e8888;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
