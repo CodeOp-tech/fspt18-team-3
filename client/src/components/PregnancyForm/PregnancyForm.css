@@ -1,0 +1,48 @@
+form {
+  text-align: center;
+  max-width: 300px;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+  color: #F6797D; 
+  padding-bottom: 20px;
+}
+
+input,
+select {
+  width: 90%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid #F6797D; 
+  border-radius: 5px;
+  background-color: #FFFFFF; 
+  color: #A4B8CB;
+}
+
+select {
+  width: 30%;
+}
+
+button {
+  background-color: #F6797D;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #f8c592;
+}
+
+button:active {
+  background-color: #c5374a; 
+}
