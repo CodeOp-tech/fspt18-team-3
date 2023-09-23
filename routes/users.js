@@ -53,4 +53,25 @@ router.put("/user/:id", async (req, res) => {
   }
 });
 
+/*DELETE USER*/
+router.delete("/users/:id", async (req, res) => {
+  try {
+    const result = await db(
+      `SELECT * FROM users WHERE id = ${req.params.id};`
+    );
+
+    if (!result) {
+      res.status(404).send();
+      return;
+    }
+
+    await db(`DELETE FROM users WHERE id = ${req.params.id};`);
+
+    const updatedUsers = await db("SELECT * FROM users ORDER BY id ASC;");
+
+    res.send(updatedUsers.data);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
 module.exports = router;
