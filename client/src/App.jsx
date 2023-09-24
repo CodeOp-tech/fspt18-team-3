@@ -2,11 +2,12 @@ import logo_babybump from "./assets/logo_babybump.png";
 import "./App.css";
 import PregnancyForm from "./components/PregnancyForm/PregnancyForm";
 import WeekView from "./components/WeekView/WeekView";
+import ViewProfilePage from "./components/ViewProfilePage/ViewProfilePage";
 
 function App() {
   return (
     <>
-      <div>
+      {/*<div>
         <a>
           <img src={logo_babybump} className="logo" alt="App logo" />
         </a>
@@ -17,10 +18,10 @@ function App() {
           Descubre semana a semana cómo crece tu bebé y diviértete en esta etapa
           tan bonita
         </p>
-        {ViewProfilePage()}
       </div>
       <PregnancyForm />
-      <WeekView />
+      <WeekView />*/}
+      <ViewProfilePage/>
     </>
   );
 }
