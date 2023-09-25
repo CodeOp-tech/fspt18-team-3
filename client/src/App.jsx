@@ -1,26 +1,29 @@
-import logo_babybump from "./assets/logo_babybump.png";
-import "./App.css";
-import PregnancyForm from "./components/PregnancyForm/PregnancyForm";
-import WeekView from "./components/WeekView/WeekView";
+import Login from "./routes/Login.jsx";
+import Register from "./routes/Register.jsx";
+import User from "./routes/User.jsx";
+import ErrorPage from "./Error-page.jsx";
+import Home from "./components/Home/Home.jsx";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 function App() {
+
+  const authHandler = () => {
+
+  }
+
+  const signUpHandler = () => {
+    
+  }
+
+
   return (
-    <>
-      <div>
-        <a>
-          <img src={logo_babybump} className="logo" alt="App logo" />
-        </a>
-      </div>
-      <h1>Baby Bump</h1>
-      <div className="card">
-        <p>
-          Descubre semana a semana cómo crece tu bebé y diviértete en esta etapa
-          tan bonita
-        </p>
-      </div>
-      <PregnancyForm />
-      <WeekView />
-    </>
+    <Routes>
+      <Route index path="/home/*" element={<Home />} />
+      <Route path="/login" element={<Login onLogin={authHandler}/>} />
+      <Route path="/register" element={<Register onRegister={signUpHandler}/>} />
+      <Route path="/user" element={<User />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
   );
 }
 

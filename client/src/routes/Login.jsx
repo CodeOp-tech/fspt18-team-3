@@ -2,9 +2,9 @@ import {Alert, Box, Button, Container, Link, TextField, Typography} from "@mui/m
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 
-export default function Login() {
+export default function Login({onLogin}) {
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
@@ -13,17 +13,14 @@ export default function Login() {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    // validate the inputs
-    if (!email || !password) {
-      setError("Please enter your username and password.");
-      return;
-    }
-
     // clear the errors
     setError("");
 
-    // TODO: send the login request
-    console.log("Logging in...");
+    const userData = {
+      email,
+      password
+    }
+    onLogin(userData)
   }
 
   return (
@@ -31,7 +28,7 @@ export default function Login() {
       <Typography variant="h5" component="h1" gutterBottom textAlign="center">
         Iniciar sesión
       </Typography>
-      {error && <Alert severity="error" sx={{my: 2}}>{error}</Alert>}
+      {error ? <Alert severity="error" sx={{my: 2}}>{error}</Alert> : <></>}
       <Box component="form" onSubmit={onSubmit}>
         <TextField
           label="Email"
@@ -41,6 +38,7 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           sx={{mt: 1}}
           fullWidth
+          required
         />
         <TextField
           label="Password"
@@ -51,6 +49,7 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           sx={{mt: 3}}
           fullWidth
+          required
         />
         <Button variant="contained" type="submit" sx={{mt: 3}} fullWidth>Login</Button>
         <Box sx={{mt: 2}}>

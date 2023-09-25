@@ -1,13 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import Login from './routes/Login.jsx'
-import Register from './routes/Register.jsx'
-import User from './routes/User.jsx'
-import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
-import ErrorPage from "./Error-page.jsx";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import {
+  BrowserRouter
+} from "react-router-dom";
 
+const root = createRoot(document.getElementById("root"));
+
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+/*
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
@@ -17,26 +26,30 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="login"/>,
-    errorElement: <ErrorPage/>,
+    element: <Navigate to="login" />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/login",
-    element: <Login/>,
+    element: <Login onLogin={authHandler}/>,
   },
   {
     path: "/register",
-    element: <Register/>,
+    element: <Register onRegister={signUpHandler}/>,
   },
   {
     path: "/user",
-    element: <User/>,
+    element: <User />,
+  },
+  {
+    path: "/",
+    element: <App />,
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>
-);
+);*/
