@@ -1,34 +1,33 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./PregnancyForm.css";
 import {useNavigate} from "react-router-dom"
 
 const PregnancyForm = () => {
-  const [name, setName] = useState('');
-  const [nameBaby, setNameBaby] = useState('');
-  const [weeks, setWeeks] = useState(0);
+  const [formData, setFormData] = useState({ name: '', babyName: '', weeks: 0 });
+  const [selectedWeekInfo, setSelectedWeekInfo] = useState(null);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  useEffect(() => {
+    // Aquí tengo que implementar la lógica para cargar la información de la semana seleccionada desde la BBDD
+    setSelectedWeekInfo// y almacenarla en selectedWeekInfo
+  }, [formData.weeks]);
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleNameBabyChange = (event) => {
-    setNameBaby(event.target.value);
-  };
-
-  const handleWeeksChange = (event) => {
-    setWeeks(event.target.value);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // A realizar cuando el endpoint esté disponible en el backend
-    console.log('Nombre:', name);
-    console.log('Nombre del bebé:', nameBaby);
-    console.log('Semanas de embarazo:', weeks);
-    navigate("/home/week")
+    console.log('Nombre:', formData.name);
+    console.log('Nombre del bebé:', formData.babyName);
+    console.log('Semanas de embarazo:', formData.weeks);
+    console.log('Información de la semana:', selectedWeekInfo);
+    navigate(`/week-view/${formData.weeks}`);
   };
 
   return (
@@ -39,37 +38,44 @@ const PregnancyForm = () => {
           tan bonita
         </p>
       </div>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>
-          Nombre:
-          <input type="text" value={name} onChange={handleNameChange} />
-        </label>
-      </div>
-      <div>
-        <label>
-          Nombre de tu bebé (opcional):
-          <input
-            type="text"
-            value={nameBaby}
-            onChange={handleNameBabyChange}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          ¿De cuántas semanas estás?
-          <select value={weeks} onChange={handleWeeksChange}>
-            {Array.from({ length: 45 }, (_, index) => (
-              <option key={index} value={index}>
-                {index}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <button type="submit">Saber más sobre mi embarazo</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>
+            Nombre:
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Nombre de tu bebé (opcional):
+            <input
+              type="text"
+              name="babyName"
+              value={formData.babyName}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            ¿De cuántas semanas estás?
+            <input
+              type='number'
+              name="weeks"
+              min={4}
+              max={40}
+              value={formData.weeks}
+              onChange={handleInputChange}
+            />
+            </label>
+        </div>
+        <button type="submit">Saber más sobre mi embarazo</button>
+      </form>
     </>
   );
 };
