@@ -51,41 +51,43 @@ CREATE TABLE advice (
         advice_description VARCHAR(1300) NOT NULL,
         FOREIGN KEY (week_id) REFERENCES weeks(id)
 );
+INSERT INTO users (user_name, mail, user_password, baby_name, creation_date, weeks_pregnant, photo_url)
+        VALUES ("Pepita", "mail@mail.com", "1234", "Manolito", "2023-09-13", 8, "https://res.cloudinary.com/dgv68zde9/image/upload/v1695065159/Pregnancy/Semana%203.jpg");
 
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 3, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'semilla de calabaza', 'El cigoto comenzará a subir por la trompa de Falopio en dirección al útero tras dividirse en varios grupos de células.');
+        VALUES ( 3, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695065159/Pregnancy/Semana%203.jpg', 'semilla de calabaza', 'El cigoto comenzará a subir por la trompa de Falopio en dirección al útero tras dividirse en varios grupos de células.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 4, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'semilla de calabaza', 'El óvulo fecundado se implantará en un lateral del útero y se dividirá rápidamente en capas de células. Algunas de ellas se convertirán en el embrión. Las capas de células pasarán a ser las partes del cuerpo de tu pequeño,');
+        VALUES ( 4, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695065237/Pregnancy/Captura_de_pantalla_2023-09-18_212659_jmhqne.jpg', 'semilla de calabaza', 'El óvulo fecundado se implantará en un lateral del útero y se dividirá rápidamente en capas de células. Algunas de ellas se convertirán en el embrión. Las capas de células pasarán a ser las partes del cuerpo de tu pequeño,');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 5, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'semilla de naranja', 'Se están formando la placenta y el cordón umbilical, que enviarán oxígeno y nutrientes al embrión. Además, esta semana seguirá desarrollándose el tubo neural, que terminará siendo la columna vertebral y el cerebro del bebé.');
+        VALUES ( 5, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695064294/Pregnancy/Captura_de_pantalla_2023-09-18_211100_s1fvgs.jpg', 'semilla de naranja', 'Se están formando la placenta y el cordón umbilical, que enviarán oxígeno y nutrientes al embrión. Además, esta semana seguirá desarrollándose el tubo neural, que terminará siendo la columna vertebral y el cerebro del bebé.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 6, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'semilla de granada', 'El hito más importante de esta semana es que el tubo neural comenzará a adoptar la forma de la columna vertebral del bebé. Además, las zonas que se convertirán en los ojos y los oídos adoptarán el aspecto de protuberancias y aparecerán unos pequeños brotes que se convertirán en los brazos y las piernas. La nariz, la boca, los oídos y las orejas también comenzarán a formarse junto con los pulmones.
+        VALUES ( 6, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381770/Pregnancy/semana-6_gtsvqz.png', 'semilla de granada', 'El hito más importante de esta semana es que el tubo neural comenzará a adoptar la forma de la columna vertebral del bebé. Además, las zonas que se convertirán en los ojos y los oídos adoptarán el aspecto de protuberancias y aparecerán unos pequeños brotes que se convertirán en los brazos y las piernas. La nariz, la boca, los oídos y las orejas también comenzarán a formarse junto con los pulmones.
 
 En la ecografía de esta semana podrá detectarse un pequeño corazón con aproximadamente 105 latidos por minuto.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 7, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'arándano', 'Aunque el cerebro del bebé seguirá evolucionando mucho tiempo después del nacimiento, ahora se formarán las secciones básicas. A medida que avance la semana, el sistema digestivo y los pulmones también se desarrollan. Además, comenzarán a aparecer los rasgos faciales y unas pequeñas manitas en cada brazo. 
+        VALUES ( 7, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381787/Pregnancy/semana-7_bq7hud.png', 'arándano', 'Aunque el cerebro del bebé seguirá evolucionando mucho tiempo después del nacimiento, ahora se formarán las secciones básicas. A medida que avance la semana, el sistema digestivo y los pulmones también se desarrollan. Además, comenzarán a aparecer los rasgos faciales y unas pequeñas manitas en cada brazo. 
 
 Otro hito importante de esta semana es la creación del cordón umbilical.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 8, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'frambuesa', 'Esta semana aparecerán pequeños dedos en las manos y los pies de tu pequeño. Además, podrá flexionar los brazos a la altura de los codos y las muñecas. 
+        VALUES ( 8, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381809/Pregnancy/semana-8_ylysbl.png', 'frambuesa', 'Esta semana aparecerán pequeños dedos en las manos y los pies de tu pequeño. Además, podrá flexionar los brazos a la altura de los codos y las muñecas. 
 
 En este punto los ojos desarrollarán pigmento y se comenzarán a formar los genitales, aunque todavía es muy pronto para saber si estás esperando un niño o una niña. 
 
 Estas características externas no son lo único que se desarrollará, ya que también lo harán los órganos internos. Cuando los intestinos estén formados, comenzarán a ocupar espacio en el cordón umbilical, ya que todavía no hay suficiente hueco en el abdomen del bebé.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 9, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'cereza', 'Los rasgos faciales de tu bebé (ahora conocido oficialmente como feto) seguirán desarrollándose estos días. De hecho, la nariz será más prominente. Los dedos de los pies ya pueden verse claramente. 
+        VALUES ( 9, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381837/Pregnancy/semana-9_l6sslk.png', 'cereza', 'Los rasgos faciales de tu bebé (ahora conocido oficialmente como feto) seguirán desarrollándose estos días. De hecho, la nariz será más prominente. Los dedos de los pies ya pueden verse claramente. 
 
 Los órganos internos también se formarán, incluidos los sistemas digestivo y reproductivo. Esto implica que los intestinos y los testículos o los ovarios crecerán cada vez más. 
 
 Ahora estás embarazada de nueve semanas, es posible que tu pequeño comience a moverse gracias al desarrollo muscular aunque aún no lo puedas notar.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 10, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'fresa', 'A lo largo de estos días la cabeza de tu pequeño adoptará una forma más redonda, mientras que los órganos internos se colocarán en su sitio y comenzarán a funcionar. 
+        VALUES ( 10, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381838/Pregnancy/semana-10_vjbonr.png', 'fresa', 'A lo largo de estos días la cabeza de tu pequeño adoptará una forma más redonda, mientras que los órganos internos se colocarán en su sitio y comenzarán a funcionar. 
 
 También saldrán unas pequeñas yemas en su boca, que posteriormente serán los dientes. Los dedos se harán más largos y las membranas que hay entre ellos desaparecerán. 
 
 Los ojos, los párpados y los oídos seguirán desarrollándose, pero aún les queda un tiempo para estar completamente formados.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 11, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'col de Bruselas', 'Esta semana estará llena de cambios emocionantes, como el desarrollo de la cabeza o la aparición de yemas en las encías. 
+        VALUES ( 11, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381840/Pregnancy/semana-11_wfl2j6.png', 'col de Bruselas', 'Esta semana estará llena de cambios emocionantes, como el desarrollo de la cabeza o la aparición de yemas en las encías. 
 
 Los rasgos faciales del bebé están madurando poco a poco. Las orejas se moverán hacia su posición final a los lados de la cabeza, mientras que los ojos se separarán y los párpados se mantendrán cerrados. 
 
@@ -93,7 +95,7 @@ Los genitales también se están formando, aunque todavía es pronto para saber 
 
 En esta etapa la cabeza representa la mitad de la longitud total del cuerpo, aunque el cuerpo también crecerá significativamente durante las próximas semanas. Para respaldar este crecimiento, tu pequeño necesita más nutrientes, por lo que la placenta crece y la cantidad de glóbulos rojos aumenta.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 12, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'fruta de la pasión', 'La semana 12 de embarazo constituye el final del primer trimestre. Los órganos vitales y el resto de partes del cuerpo de tu pequeño se colocarán en su sitio. 
+        VALUES ( 12, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381845/Pregnancy/semana-12_fod8pu.png', 'fruta de la pasión', 'La semana 12 de embarazo constituye el final del primer trimestre. Los órganos vitales y el resto de partes del cuerpo de tu pequeño se colocarán en su sitio. 
 
 Seguramente sea posible escuchar el latido del corazón de tu hijo con un dispositivo Doppler.
 
@@ -101,31 +103,31 @@ En este punto los párpados ya se han formado. Permanecerán ligeramente cerrado
 
 Las manos se desarrollarán más que los pies, y los brazos serán más largos que las piernas. En las puntas de los dedos saldrán las uñas de manos y pies, que seguirán creciendo durante el próximo trimestre.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 13, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'ciruela grande', 'Esta semana, los órganos de tu pequeño se formarán por completo. Los riñones producirán orina y la liberarán en el líquido amniótico, mientras que el bazo generará glóbulos rojos para transportar oxígeno por el organismo del bebé. 
+        VALUES ( 13, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381846/Pregnancy/semana-13_mvblgw.png', 'ciruela grande', 'Esta semana, los órganos de tu pequeño se formarán por completo. Los riñones producirán orina y la liberarán en el líquido amniótico, mientras que el bazo generará glóbulos rojos para transportar oxígeno por el organismo del bebé. 
 
 Los intestinos regresarán al abdomen desde el cordón umbilical, ya que por fin hay espacio suficiente para acomodarlos. Además, algunos de los huesos más grandes, se endurecerán. Y las cuerdas vocales de tu bebé comenzarán a desarrollarse.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 14, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'nectarina', 'Tu pequeño hará algunas cosas nuevas esta semana, como mover los párpados y flexionar los brazos y las piernas. Esto le permitirá practicar la habilidad de llevarse la mano a la boca. 
+        VALUES ( 14, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381845/Pregnancy/semana-14_s7weye.png', 'nectarina', 'Tu pequeño hará algunas cosas nuevas esta semana, como mover los párpados y flexionar los brazos y las piernas. Esto le permitirá practicar la habilidad de llevarse la mano a la boca. 
 
 Los sentidos del gusto y el olfato también se desarrollarán. Además, la piel se endurecerá. Aunque tendrás que esperar a que el bebé nazca para saber si tendrá pelo o no, en este tiempo se formarán los folículos pilosos debajo de la superficie de la piel. ');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 15, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'pomelo', 'Esta semana los rasgos faciales de tu pequeño se colocarán poco a poco en su sitio y las orejas bajarán a ambos lados de la cabeza. Además, también se formará el patrón capilar y comenzará a crecer el pelo. Cada bebé es diferente, por lo que algunos tendrán mucho pelo al nacer y otros, no. Lo que sí es común para todos es la capa de pelo suave y velloso llamado lanugo, que aparecerá esta semana y pronto cubrirá su cuerpecito.
+        VALUES ( 15, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381873/Pregnancy/semana-15_wpu6qv.png', 'pomelo', 'Esta semana los rasgos faciales de tu pequeño se colocarán poco a poco en su sitio y las orejas bajarán a ambos lados de la cabeza. Además, también se formará el patrón capilar y comenzará a crecer el pelo. Cada bebé es diferente, por lo que algunos tendrán mucho pelo al nacer y otros, no. Lo que sí es común para todos es la capa de pelo suave y velloso llamado lanugo, que aparecerá esta semana y pronto cubrirá su cuerpecito.
 
 Una piel delgada y traslúcida cubrirá los vasos sanguíneos, que ahora transportarán hasta 47 litros de sangre al día gracias al bombeo de su corazón en desarrollo.
 
 Puede que aún no lo notes, pero tu hijo aumentará mucho su actividad durante estos días. De hecho, comenzará a girar y rodar en el saco amniótico.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 16, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'manzana', 'Los músculos del bebé son cada vez más fuertes. Esta semana erguirá la cabeza y comenzará a realizar movimientos coordinados con brazos y piernas.
+        VALUES ( 16, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381874/Pregnancy/semana-16_ejzvye.png', 'manzana', 'Los músculos del bebé son cada vez más fuertes. Esta semana erguirá la cabeza y comenzará a realizar movimientos coordinados con brazos y piernas.
 
 Otra novedad de la semana 16 de embarazo es que las orejas del bebé están más cerca de alcanzar su posición final y es posible que pueda escuchar sonidos en este punto o en las próximas semanas.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 17, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'pera', 'Esta semana tu hijo desarrollará una capa de grasa debajo de la piel, que se irá haciendo más gruesa a medida que avance el embarazo. Esta grasa le proporciona energía y le ayuda a mantenerse caliente después de nacer. 
+        VALUES ( 17, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381875/Pregnancy/semana-17_lxxynz.png', 'pera', 'Esta semana tu hijo desarrollará una capa de grasa debajo de la piel, que se irá haciendo más gruesa a medida que avance el embarazo. Esta grasa le proporciona energía y le ayuda a mantenerse caliente después de nacer. 
 
 Las glándulas sebáceas de la piel de tu pequeño comenzarán a producir vérnix, una película blanca y grasa que protege la piel y regula la temperatura corporal. 
 
 ¿Sabías que también le están saliendo las uñas de los pies? A finales de este mes es probable que ya lleguen hasta las puntas de los dedos. De hecho, a veces hay que cortarlas tras dar a luz.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 18, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'boniato', 'Esta semana tu bebé desarrollará una característica única: las huellas dactilares. Las almohadillas de grasa que hay en las yemas de sus dedos se convertirán en líneas arremolinadas que le distinguirán del resto.
+        VALUES ( 18, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381846/Pregnancy/semana-18_bvuew8.png', 'boniato', 'Esta semana tu bebé desarrollará una característica única: las huellas dactilares. Las almohadillas de grasa que hay en las yemas de sus dedos se convertirán en líneas arremolinadas que le distinguirán del resto.
 
 El sistema digestivo, que seguirá formándose, ya lleva funcionando varias semanas. Tu pequeño tragará líquido amniótico, que pasará por el estómago y los intestinos, arrastrando consigo células muertas y secreciones. Todo ello se convertirá en meconio, una sustancia negra y espesa que verás cuando le cambies el pañal por primera vez.
 
@@ -133,7 +135,7 @@ En torno a las 18 semanas las orejas empezarán a sobresalir de los lados de la 
 
 El bebé necesitará bilis para digerir los nutrientes que necesita, por lo que la vesícula biliar comenzará a funcionar.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 19, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'mango', 'Si tu bebé es una niña, su sistema reproductor terminará de desarrollarse. La vagina, el útero y las trompas de Falopio se colocarán en su sitio. Los ovarios contendrán más de seis millones de óvulos, aunque cuando nazca esa cantidad se reducirá a aproximadamente un millón. 
+        VALUES ( 19, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381873/Pregnancy/semana-19_nw0gd1.png', 'mango', 'Si tu bebé es una niña, su sistema reproductor terminará de desarrollarse. La vagina, el útero y las trompas de Falopio se colocarán en su sitio. Los ovarios contendrán más de seis millones de óvulos, aunque cuando nazca esa cantidad se reducirá a aproximadamente un millón. 
 
 Si es niño, sus testículos ya estarán formados y segregarán testosterona desde la semana 10 de embarazo. No obstante, los genitales seguirán creciendo. 
 
@@ -141,7 +143,7 @@ En esta fase del embarazo la piel de tu pequeño comenzará a producir una capa 
 
 En torno a la semana 19 de embarazo el bebé desarrollará unos hábitos de sueño más regulares y se despertará cuando note movimiento o ruido. También le crecerán las uñas en manos y pies. ');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 20, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'pimiento', 'Los rasgos faciales, como la nariz, irán tomando forma. Tu pequeño ya parecerá toda una personita. El reflejo de succión mejorará hasta el punto de que comenzará a chuparse el dedo. Su cerebro seguirá formándose rápidamente, sobre todo los centros nerviosos dedicados a los sentidos. 
+        VALUES ( 20, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381873/Pregnancy/semana-20_f66xdw.png', 'pimiento', 'Los rasgos faciales, como la nariz, irán tomando forma. Tu pequeño ya parecerá toda una personita. El reflejo de succión mejorará hasta el punto de que comenzará a chuparse el dedo. Su cerebro seguirá formándose rápidamente, sobre todo los centros nerviosos dedicados a los sentidos. 
 
 Poco a poco desarrollará ciclos definidos de sueño y vigilia. Además, será cada vez más sensible a los sonidos del entorno, por lo que es normal que los ruidos fuertes le despierten.
 
@@ -149,7 +151,7 @@ En esta etapa la piel del bebé se volverá más gruesa. También se formarán l
 
 En la semana 20 de embarazo el sistema digestivo de tu hijo comenzará a producir una sustancia pegajosa de color negro verdoso llamada meconio, que se acumulará en sus intestinos durante el resto del embarazo. Por lo general, la expulsará en las primeras horas de vida. ');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 21, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'plátano', 'Esta semana el latido del corazón de tu bebé ya es lo suficientemente fuerte como para escucharlo con un simple estetoscopio, pero puede ser difícil distinguirlo de tu propio latido. Escucha el ritmo más rápido: el latido del bebé es de 120 a 160 latidos por minuto, aproximadamente el doble de rápido que el tuyo.
+        VALUES ( 21, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381875/Pregnancy/semana-21_vnkoqe.png', 'plátano', 'Esta semana el latido del corazón de tu bebé ya es lo suficientemente fuerte como para escucharlo con un simple estetoscopio, pero puede ser difícil distinguirlo de tu propio latido. Escucha el ritmo más rápido: el latido del bebé es de 120 a 160 latidos por minuto, aproximadamente el doble de rápido que el tuyo.
 
 Tu bebé ya está empezando a dormir y a despertarse en ciclos sutiles. Las ecografías muestran que los bebés que aún no han nacido pueden incluso adoptar una posición favorita para dormir.
 
@@ -157,23 +159,23 @@ En torno a la semana 21 de embarazo, los dedos de las manos y de los pies ya se 
 
 El sistema digestivo de tu bebé se está desarrollando. El pequeño ya es capaz de tragar pequeñas cantidades de líquido amniótico, que pueden absorber los intestinos. Su pequeño hígado y su bazo han estado produciendo células sanguíneas, pero ahora la médula ósea también puede crearlas. El hígado y el bazo dejarán de producir estas células sanguíneas antes del nacimiento.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 22, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'papaya', 'En la semana 22 de embarazo los párpados de tu bebé aún no están separados, pero los ojos empiezan a moverse. Los conductos lagrimales también se están formando y las cejas de tu bebé son pequeños mechones de pelo blanco y fino. Incluso es posible que frunza esas pequeñas cejas. Además, cada vez es más sensible a los estímulos externos.
+        VALUES ( 22, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381894/Pregnancy/semana-22_scxsrs.png', 'papaya', 'En la semana 22 de embarazo los párpados de tu bebé aún no están separados, pero los ojos empiezan a moverse. Los conductos lagrimales también se están formando y las cejas de tu bebé son pequeños mechones de pelo blanco y fino. Incluso es posible que frunza esas pequeñas cejas. Además, cada vez es más sensible a los estímulos externos.
 
 El cerebro de tu bebé se está desarrollando rápidamente y se están formando las terminaciones nerviosas. A estas alturas el bebé ya ha desarrollado el sentido del tacto, lo que significa que puede acariciar una parte de su cuerpo a la que llegue por casualidad o chuparse el dedo. Además, está empezando a acumular capas de lo que se denomina grasa parda, que lo ayuda a mantenerse caliente.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 23, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'berenjena', 'En la semana 23 de embarazo es probable que tu bebé duerma mucho. La mayor parte de sus horas de sueño (en realidad, el 80 %) las pasará en lo que se denomina sueño de movimientos oculares rápidos o sueño MOR. Durante el sueño MOR, los ojos de tu bebé se mueven y su cerebro está muy activo.
+        VALUES ( 23, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381874/Pregnancy/semana-23_j6ser0.png', 'berenjena', 'En la semana 23 de embarazo es probable que tu bebé duerma mucho. La mayor parte de sus horas de sueño (en realidad, el 80 %) las pasará en lo que se denomina sueño de movimientos oculares rápidos o sueño MOR. Durante el sueño MOR, los ojos de tu bebé se mueven y su cerebro está muy activo.
 
 Puede que no hayas pensado demasiado en el líquido que rodea a tu bebé en el saco amniótico, pero en realidad desempeña un papel muy importante: crea el entorno perfecto para que tu bebé se convierta en un recién nacido sano. El líquido ayuda a mantenerlo caliente y protegido mientras crece.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 24, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'mazorca de maíz', 'A las 24 semanas el oído interno de tu bebé está completamente desarrollado. Este órgano controla su sentido del equilibrio y le ayuda a percibir si está o no boca arriba en el útero. 
+        VALUES ( 24, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381896/Pregnancy/semana-24_mv5anc.png', 'mazorca de maíz', 'A las 24 semanas el oído interno de tu bebé está completamente desarrollado. Este órgano controla su sentido del equilibrio y le ayuda a percibir si está o no boca arriba en el útero. 
 
 Aunque los pulmones de tu bebé ya están formados, no podrán funcionar con normalidad en el mundo exterior hasta que empiecen a producir una sustancia llamada surfactante, lo que tendrá lugar en las próximas semanas, en torno a la semana 26 de embarazo.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 25, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'calabaza pequeña', 'En la semana 25 de embarazo el bebé está empezando a engordar. Al estar ganando grasa cada día, las arrugas de la piel se le están suavizando. 
+        VALUES ( 25, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381875/Pregnancy/semana-25_oxocyr.png', 'calabaza pequeña', 'En la semana 25 de embarazo el bebé está empezando a engordar. Al estar ganando grasa cada día, las arrugas de la piel se le están suavizando. 
 
 En el cerebro del bebé, el córtex está formando capas. La mayor parte de la acción sigue estando controlada por otras zonas cerebrales desarrolladas mucho antes. Además del cerebro, hay otras partes del sistema nervioso aún en desarrollo. Este importante sistema es el que ayudará a tu bebé a aprender a recibir información del mundo exterior, así como a procesarla y a reaccionar.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 26, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'calabacín', 'En la semana 26 de embarazo, los pulmones de tu bebé están trabajando duro y preparándose para sus primeras respiraciones tras el nacimiento. Están empezando a producir surfactante, una sustancia que ayuda a los pulmones a inflarse correctamente con cada respiración.
+        VALUES ( 26, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381876/Pregnancy/semana-26_exeodp.png', 'calabacín', 'En la semana 26 de embarazo, los pulmones de tu bebé están trabajando duro y preparándose para sus primeras respiraciones tras el nacimiento. Están empezando a producir surfactante, una sustancia que ayuda a los pulmones a inflarse correctamente con cada respiración.
         
         La piel del bebé está empezando a tomar un color rojizo, aunque todavía es un poco translúcida. Le sigue creciendo pelo en la cabeza y también empiezan a salirle las pestañas.
         
@@ -181,41 +183,41 @@ INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
         
         En la semana 26 de embarazo la posición del bebé puede cambiar de vez en cuando y en las siguientes semanas será importante que prestes atención a la frecuencia de sus movimientos. Tu médico te ofrecerá más información sobre cómo hacerlo.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 27, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'coliflor', 'Tu bebé está trabajando en sus patadas y estiramientos, y está empezando a hacer movimientos de agarre. También está empezando a sonreír, sobre todo cuando duerme. Y aún hay más: después de haber estado cerrados durante más de cuatro meses, los párpados de tu bebé pueden volver a abrirse. Tu pequeño puede ver las luces y sombras a su alrededor. 
+        VALUES ( 27, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381878/Pregnancy/semana-27_hgormq.png', 'coliflor', 'Tu bebé está trabajando en sus patadas y estiramientos, y está empezando a hacer movimientos de agarre. También está empezando a sonreír, sobre todo cuando duerme. Y aún hay más: después de haber estado cerrados durante más de cuatro meses, los párpados de tu bebé pueden volver a abrirse. Tu pequeño puede ver las luces y sombras a su alrededor. 
 
 Es posible que empiece a reconocer voces familiares, sobre todo la tuya. Al oír tu voz, su ritmo cardíaco puede disminuir, lo que significa que está tranquilo y relajado. 
 
 Sus pequeños pulmones e hígado y su sistema inmunitario todavía tienen que desarrollarse por completo, pero está ganando peso y grasa de forma constante. En este momento, tu bebé se parece al bebé completamente formado que vas a ver al nacer, solo que más pequeño.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 28, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'lechuga', 'Con los ojos abiertos, tu bebé ya es capaz de distinguir la luz de la oscuridad. Incluso puede girarse o moverse como reacción a los cambios de luz. 
+        VALUES ( 28, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381891/Pregnancy/semana-28_uldpyp.png', 'lechuga', 'Con los ojos abiertos, tu bebé ya es capaz de distinguir la luz de la oscuridad. Incluso puede girarse o moverse como reacción a los cambios de luz. 
 
 Su cerebro aún se está desarrollando, pero el sistema nervioso central se ha desarrollado lo suficiente como para permitirle empezar a controlar su temperatura corporal.
 
 En la semana 28 de embarazo la posición de tu bebé dentro del útero puede ser con la cabeza hacia abajo, o con las nalgas, los pies o ambos apuntando hacia abajo. En este caso, se dice que el bebé está de nalgas.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 29, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'calabaza mediana', 'Ha comenzado a ganar peso más rápidamente. Durante los últimos meses del embarazo seguirá engordando y probablemente duplicará su peso actual. 
+        VALUES ( 29, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381894/Pregnancy/semana-29_n1k3en.png', 'calabaza mediana', 'Ha comenzado a ganar peso más rápidamente. Durante los últimos meses del embarazo seguirá engordando y probablemente duplicará su peso actual. 
 
 Aunque la mayor parte del cuerpo y los órganos se han desarrollado casi por completo, es posible que los pulmones no estén completamente listos para salir del útero.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 30, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'repollo', 'Tu pequeño está acumulando grasa, por lo que su piel parecerá menos arrugada. Esta grasa le mantendrá caliente cuando nazca.
+        VALUES ( 30, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381896/Pregnancy/semana-30_vtmrkm.png', 'repollo', 'Tu pequeño está acumulando grasa, por lo que su piel parecerá menos arrugada. Esta grasa le mantendrá caliente cuando nazca.
 
 El vello fino que cubre su piel, llamado lanugo, desaparecerá en esta etapa. Cuando el bebé nazca, te darás cuenta de la cantidad de lanugo que ha perdido, sobre todo si le queda un poco en los hombros, la espalda o las orejas.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 31, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'coco', 'La mayoría de los huesos del bebé se endurecerán, pero el cráneo seguirá siendo blando y flexible para que pueda pasar fácilmente por el canal de parto cuando llegue el momento. 
+        VALUES ( 31, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381890/Pregnancy/semana-31_ihfnxa.png', 'coco', 'La mayoría de los huesos del bebé se endurecerán, pero el cráneo seguirá siendo blando y flexible para que pueda pasar fácilmente por el canal de parto cuando llegue el momento. 
 
 Tu pequeño tendrá unos puntos blandos en su cráneo al nacer, llamados fontanelas. Una de ellas se endurecerá a los pocos meses de nacer, mientras que las otras se cerrarán aproximadamente a los 18 meses.  
 
 También habrá otras novedades en la semana 31 de embarazo. El cerebro del bebé está madurando rápidamente. Empezará a regular su propia temperatura corporal, lo que significa que ya no depende totalmente del líquido amniótico para calentarse.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 32, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'col china', 'El feto se parece cada vez más al bebé que conocerás en unas semanas.Es posible que tu bebé se ponga de pie sobre la cabeza estos días. La mayoría de los bebés pasan a tener la cabeza hacia abajo unas semanas antes de nacer. No te sorprendas si decide cambiar de posición varias veces antes de nacer. Notarás cómo se mueve en la tripa mientras da vueltas.
+        VALUES ( 32, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381894/Pregnancy/semana-32_qqeogt.png', 'col china', 'El feto se parece cada vez más al bebé que conocerás en unas semanas.Es posible que tu bebé se ponga de pie sobre la cabeza estos días. La mayoría de los bebés pasan a tener la cabeza hacia abajo unas semanas antes de nacer. No te sorprendas si decide cambiar de posición varias veces antes de nacer. Notarás cómo se mueve en la tripa mientras da vueltas.
         
         Cada vez se forma más grasa bajo la piel del bebé, que ahora será opaca. Además, las uñas de los pies han crecido y ya son visibles.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 33, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'piña', 'En este momento del embarazo el cerebro del bebé no parará de recibir estímulos de los cinco sentidos. Puede oír e incluso ver algo de lo que ocurre fuera del útero. Cuando oiga tu voz, su ritmo cardíaco disminuirá, lo que significa que está más tranquilo. También será capaz de distinguir la luz de la oscuridad en su pequeño entorno. De hecho, sus ojos están lo suficientemente desarrollados como para que las pupilas respondan a los cambios de luz. 
+        VALUES ( 33, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381894/Pregnancy/semana-33_ze5upl.png', 'piña', 'En este momento del embarazo el cerebro del bebé no parará de recibir estímulos de los cinco sentidos. Puede oír e incluso ver algo de lo que ocurre fuera del útero. Cuando oiga tu voz, su ritmo cardíaco disminuirá, lo que significa que está más tranquilo. También será capaz de distinguir la luz de la oscuridad en su pequeño entorno. De hecho, sus ojos están lo suficientemente desarrollados como para que las pupilas respondan a los cambios de luz. 
 
 Tu hijo ganará más peso (y lo seguirá haciendo hasta la fecha de parto). Sin embargo, es probable que no crezca mucho más.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 34, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'melón pequeño', 'Durante la semana 34 de embarazo el bebé seguirá creciendo, por lo que tendrá menos espacio para girar en el útero. En consecuencia, puede que notes movimientos más suaves. 
+        VALUES ( 34, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381832/Pregnancy/semana-34_rwtkcc.png', 'melón pequeño', 'Durante la semana 34 de embarazo el bebé seguirá creciendo, por lo que tendrá menos espacio para girar en el útero. En consecuencia, puede que notes movimientos más suaves. 
 
 En esta etapa tu pequeño descenderá más por la pelvis, lo que indica que queda poco para su llegada al mundo. En los próximos días, si te haces una ecografía o acudes al médico, tal vez descubras que se ha colocado con la cabeza hacia abajo como preparación para el parto. 
 
@@ -223,7 +225,7 @@ En esta etapa tu pequeño descenderá más por la pelvis, lo que indica que qued
 
 Si esperas un niño, puede que los testículos ya estén en el escroto. A veces, estos no descienden hasta el nacimiento. Si es tu caso, es probable que los testículos caigan cuando el bebé tenga seis meses.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 35, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'melón grande', 'En esta semana los brazos y las piernas del bebé engordarán y su piel se volverá más rosada y suave. 
+        VALUES ( 35, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381833/Pregnancy/semana-35_ca6coc.png', 'melón grande', 'En esta semana los brazos y las piernas del bebé engordarán y su piel se volverá más rosada y suave. 
 
 Los pulmones comenzarán a producir surfactante. Esta sustancia ayuda a que funcionen correctamente y puedan tomar aire cuando esté fuera del útero. 
 
@@ -231,25 +233,25 @@ El cerebro y el sistema nervioso del bebé seguirán desarrollándose. En este m
 
 En la semana 35 de embarazo los sistemas circulatorio y musculoesquelético estarán completamente desarrollados, por lo que el bebé podrá colocarse con la cabeza hacia abajo como preparación para el parto.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 36, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'lechuga romana', 'En el momento del parto, los huesos de su cráneo se habrán desarrollado, pero aún no se habrán fusionado. Esto significa que pueden moverse para que la cabeza y el cuerpo pasen por el cuello uterino y la pelvis con mayor facilidad. 
+        VALUES ( 36, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381832/Pregnancy/semana-36_monnbj.png', 'lechuga romana', 'En el momento del parto, los huesos de su cráneo se habrán desarrollado, pero aún no se habrán fusionado. Esto significa que pueden moverse para que la cabeza y el cuerpo pasen por el cuello uterino y la pelvis con mayor facilidad. 
 
 Por ello, si tienes un parto vaginal, la cabeza de tu hijo podrá estar ligeramente deformada cuando nazca. No obstante, volverá a tener una forma más normal y redondeada después de unos días. Los huesos del cráneo se fusionarán a lo largo de los dos primeros años de vida.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 37, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'acelga', 'Aunque quede un poco para la fecha de parto, se considera que el embarazo ya ha llegado a término temprano. Para llegar a término completo tendrás que esperar a la semana 39. 
+        VALUES ( 37, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381833/Pregnancy/semana-37_thbp6s.png', 'acelga', 'Aunque quede un poco para la fecha de parto, se considera que el embarazo ya ha llegado a término temprano. Para llegar a término completo tendrás que esperar a la semana 39. 
 
 En cuanto al desarrollo, el bebé perderá la mayor parte del lanugo, que es el vello corporal fino que cubre su cuerpo mientras está en el útero. También hará movimientos de agarre con los dedos y responderá a las luces brillantes del exterior con movimientos o giros. 
 
 Si aún no lo ha hecho, es posible que se coloque con la cabeza hacia abajo como preparación para el parto.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 38, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'ruibarbo', 'Cuando el bebé nazca, sus primeras deposiciones se llamarán meconio. Esta sustancia pegajosa de color negro verdoso comienza a acumularse en sus intestinos mientras está en el útero. Se forma a partir de materiales de desecho como las células muertas de la piel y el lanugo, que es el vello corporal fino que se desprende.  
+        VALUES ( 38, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381833/Pregnancy/semana-38_ydy7k3.png', 'ruibarbo', 'Cuando el bebé nazca, sus primeras deposiciones se llamarán meconio. Esta sustancia pegajosa de color negro verdoso comienza a acumularse en sus intestinos mientras está en el útero. Se forma a partir de materiales de desecho como las células muertas de la piel y el lanugo, que es el vello corporal fino que se desprende.  
 
 Aunque todavía faltan un par de semanas para la fecha de parto prevista, el bebé puede llegar en cualquier momento. Recuerda que solo el 4 % de las madres dan a luz el día que estima el médico.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 39, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'sandía', 'El embarazo por fin ha llegado a término completo. El final del tercer trimestre está cada vez más cerca. 
+        VALUES ( 39, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381834/Pregnancy/semana-39_kg9nca.png', 'sandía', 'El embarazo por fin ha llegado a término completo. El final del tercer trimestre está cada vez más cerca. 
 
 Los pulmones y el cerebro del bebé seguirán desarrollándose después del nacimiento. De hecho, el cerebro no alcanzará su tamaño completo hasta que cumpla dos años y los pulmones no madurarán hasta los tres. En estos días los pulmones fabricarán surfactante para evitar que los alvéolos se queden pegados cuando respire por primera vez.');
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
-        VALUES ( 40, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t', 'calabaza grande', 'En la semana 40 de embarazo tu pequeño podría llegar cualquier día, pero también quedarse un tiempo más en la tripa. Si no te pones de parto una semana antes de la fecha prevista, el médico controlará el ritmo cardíaco y los movimientos del bebé para asegurarse de que todo va bien. 
+        VALUES ( 40, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695381836/Pregnancy/semana-40_vpeftu.png', 'calabaza grande', 'En la semana 40 de embarazo tu pequeño podría llegar cualquier día, pero también quedarse un tiempo más en la tripa. Si no te pones de parto una semana antes de la fecha prevista, el médico controlará el ritmo cardíaco y los movimientos del bebé para asegurarse de que todo va bien. 
 
 Puede que la cabeza de tu hijo haya descendido por la pelvis y su cuerpo esté encogido. Tampoco tiene más opciones, ya que está muy apretado ahí dentro. Si está de nalgas, el 
 médico puede intentar girarlo ejerciendo una presión firme sobre tu abdomen. Si esto no funciona, puede comentarte la posibilidad de realizar una cesárea. 
