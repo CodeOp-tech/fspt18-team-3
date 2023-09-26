@@ -1,26 +1,33 @@
-import logo_babybump from "./assets/logo_babybump.png";
-import "./App.css";
-import PregnancyForm from "./components/PregnancyForm/PregnancyForm";
+import Login from "./routes/Login.jsx";
+import Register from "./routes/Register.jsx";
+import User from "./routes/User.jsx";
+import ErrorPage from "./Error-page.jsx";
+import Home from "./components/Home/Home.jsx";
+import { Routes, Route, Navigate } from "react-router-dom";
 import WeekView from "./components/WeekView/WeekView";
+// eslint-disable-next-line no-unused-vars
+import React, {useState} from "react";
 
 function App() {
+
+  const authHandler = () => {
+
+  }
+
+  const signUpHandler = () => {
+    
+  }
+
+
   return (
-    <>
-      <div>
-        <a>
-          <img src={logo_babybump} className="logo" alt="App logo" />
-        </a>
-      </div>
-      <h1>Baby Bump</h1>
-      <div className="card">
-        <p>
-          Descubre semana a semana cómo crece tu bebé y diviértete en esta etapa
-          tan bonita
-        </p>
-      </div>
-      <PregnancyForm />
-      <WeekView />
-    </>
+    <Routes>
+      <Route path="/" element={<Home /> } />
+      <Route path="/week-view" element={<WeekView />} />
+      <Route path="/login" element={<Login onLogin={authHandler}/>} />
+      <Route path="/register" element={<Register onRegister={signUpHandler}/>} />
+      <Route path="/user" element={<User />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
   );
 }
 
