@@ -52,7 +52,7 @@ CREATE TABLE advice (
         FOREIGN KEY (week_id) REFERENCES weeks(id)
 );
 INSERT INTO users (user_name, mail, user_password, baby_name, creation_date, weeks_pregnant, photo_url)
-        VALUES ("Pepita", "mail@mail.com", "1234", "Manolito", "2023-09-13", 8, "https://res.cloudinary.com/dgv68zde9/image/upload/v1695065159/Pregnancy/Semana%203.jpg");
+        VALUES ("Pepita", "mail@mail.com", "1234", "Manolito", "2023-09-13", 8, "https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t");
 
 INSERT INTO weeks (week_number, baby_image, baby_size, baby_development)
         VALUES ( 3, 'https://res.cloudinary.com/dgv68zde9/image/upload/v1695065159/Pregnancy/Semana%203.jpg', 'semilla de calabaza', 'El cigoto comenzará a subir por la trompa de Falopio en dirección al útero tras dividirse en varios grupos de células.');

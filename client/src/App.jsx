@@ -5,6 +5,8 @@ import ErrorPage from "./Error-page.jsx";
 import Home from "./components/Home/Home.jsx";
 import { Routes, Route, Navigate } from "react-router-dom";
 import WeekView from "./components/WeekView/WeekView";
+
+import ViewProfilePage from "./components/ViewProfilePage/ViewProfilePage";
 // eslint-disable-next-line no-unused-vars
 import React, {useState} from "react";
 
@@ -20,7 +22,6 @@ function App() {
 
 
   return (
-
     <Routes>
       <Route path="/" element={<Home /> } />
       <Route path="/week-view" element={<WeekView />} />
