@@ -8,9 +8,9 @@ router.get('/', function(req, res, next) {
 });
 
 /*GET WEEKS */
-router.get('/weeks/:week_number', async function (req, res){
+router.get('/:week_id', async function (req, res){
   try{
-    const result = await db(`SELECT * FROM weeks WHERE id = ${req.params.week_number};`)
+    const result = await db(`SELECT * FROM weeks WHERE id = ${req.params.week_id};`)
     res.send(result.data)
   }catch(err){
     res.status(500).send({ error: err.message })
