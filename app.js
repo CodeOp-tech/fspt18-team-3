@@ -8,6 +8,7 @@ var logger = require('morgan');
 
 var usersRouter = require('./routes/users');
 var weeksRouter = require('./routes/weeks');
+var photosRouter = require('./routes/photos');
 
 var app = express();
 
@@ -22,5 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/weeks', weeksRouter);
+app.use('/photos', photosRouter);
 
 module.exports = app;

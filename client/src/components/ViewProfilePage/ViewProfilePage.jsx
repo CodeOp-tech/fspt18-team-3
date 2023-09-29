@@ -46,7 +46,7 @@ import img3 from "../../images/img3.jpg"
             setError(err))
     }
 
-    const countWeeks = () =>{
+    const countWeeks = (user) =>{
         const dateToday = new Date().toISOString().slice(0,10);
         const simpleDate = new Date(dateToday)
         const creationDate = new Date(user.creation_date)
@@ -58,8 +58,8 @@ import img3 from "../../images/img3.jpg"
        return  Math.round(result)
     }
 
-    const countWeeksLeft = () =>{
-        return 40 - countWeeks()
+    const countWeeksLeft = (user) =>{
+        return 40 - countWeeks(user)
     }
 
     return <div>
@@ -70,8 +70,8 @@ import img3 from "../../images/img3.jpg"
             </div>
             <div className="profile-info">
                 <h2>{user.user_name}</h2>
-                <p>Tu bebé ya tiene {countWeeks()} semanas.</p>
-                <p>Quedan aproximadamente {countWeeksLeft()} para tu parto.</p>
+                <p>Tu bebé ya tiene {countWeeks(user)} semanas.</p>
+                <p>Quedan aproximadamente {countWeeksLeft(user)} para tu parto.</p>
             </div>
             <div className="profile-buttons">
                 <button type="button">Saber más sobre mi embarazo</button>

@@ -63,7 +63,7 @@ const WeekView = ({/* userName, babyName, weeks*/}) => {
 
 const getWeeks = async (user) => {
 
-  fetch(`http://localhost:5000/weeks/${countWeeks(user)}`)
+  fetch(`http://localhost:5000/weeks/${getWeekId(user)}`)
   .then(response => response.json())
   .then(week =>
       setWeeks(week[0])
@@ -81,7 +81,7 @@ const getSymptoms = async (user) =>{
     )
     .catch(err =>
         setError(err))
-}
+} 
 
 const getAdvice = async (user) =>{
 
