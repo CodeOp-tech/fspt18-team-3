@@ -29,6 +29,7 @@ function App() {
       <Route path="/register" element={<Register onRegister={signUpHandler}/>} />
       <Route path="/user" element={<User />} />
       <Route path="*" element={<ErrorPage />} />
+      <Route path="/profileView" element={<ViewProfilePage />} />
     </Routes>
   );
 }
