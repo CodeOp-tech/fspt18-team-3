@@ -1,44 +1,62 @@
-import {Alert, Box, Button, Container, Link, TextField, Typography} from "@mui/material";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Form,
+  Link
+} from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import { useState } from "react";
+import MuiInput from "@mui/material/Input";
+import Header from "../components/Header/Header";
 
-export default function Register({onRegister}) {
+const Input = styled(MuiInput)`
+  width: 42px;
+`;
 
-  const navigate = useNavigate();
+export default function Register() {
 
-  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [weeks, setWeeks] = useState(0);
+  const [username, setUsername] = useState("");
+  const [babyName, setBabyName] = useState("");
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
+  const handleInputChange = (event) => {
+    setWeeks(event.target.value === "" ? 0 : Number(event.target.value));
+  };
 
-    if (password !== rePassword) return;
-
-    setError("");
-    const userData = {
-      email,
-      password
+  const handleBlur = () => {
+    if (weeks < 0) {
+      setWeeks(0);
+    } else if (weeks > 42) {
+      setWeeks(42);
     }
-    onRegister(userData)
-    navigate('/login')
-  }
+  };
 
   return (
-    <Container maxWidth="xs" sx={{mt: 2}}>
+    <Container maxWidth="xs" sx={{ mt: 2 }}>
+      <Header />
       <Typography variant="h5" component="h1" gutterBottom textAlign="center">
         Crear cuenta
       </Typography>
-      {error ? <Alert severity="error" sx={{my: 2}}>{error}</Alert> : <></>}
-      <Box component="form" onSubmit={onSubmit}>
+      <Form method="post" replace>
+        <TextField
+          label="Username"
+          variant="outlined"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          sx={{ mt: 3 }}
+          fullWidth
+          required
+        />
         <TextField
           label="Email"
           variant="outlined"
-          autoComplete="email"
+          name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          sx={{mt: 3}}
+          sx={{ mt: 3 }}
           fullWidth
           required
         />
@@ -46,10 +64,10 @@ export default function Register({onRegister}) {
           label="Password"
           variant="outlined"
           type="password"
-          autoComplete="new-password"
+          name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          sx={{mt: 3}}
+          sx={{ mt: 3 }}
           fullWidth
           required
         />
@@ -57,18 +75,57 @@ export default function Register({onRegister}) {
           label="Confirm password"
           variant="outlined"
           type="password"
-          autoComplete="new-password"
+          name="rePassword"
           value={rePassword}
           onChange={(e) => setRePassword(e.target.value)}
-          sx={{mt: 3}}
+          sx={{ mt: 3 }}
           fullWidth
           required
         />
-        <Button variant="contained" type="submit" sx={{mt: 3}} fullWidth>Sign up</Button>
-        <Box sx={{mt: 2}}>
-          Do you have an account already? <Link href="/login">Log in</Link>
+        <TextField
+          label="Baby name"
+          variant="outlined"
+          name="babyName"
+          value={babyName}
+          onChange={(e) => setBabyName(e.target.value)}
+          sx={{ mt: 3 }}
+          fullWidth
+        />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            margin: "20px 0 0 0",
+          }}
+        >
+          <Typography id="input-number">
+            How many weeks are you pregnant?
+          </Typography>
+          <Input
+            value={weeks}
+            size="medium"
+            name="weeksPregnant"
+            onChange={handleInputChange}
+            onBlur={handleBlur}
+            inputProps={{
+              step: 1,
+              min: 0,
+              max: 42,
+              type: "number",
+              "aria-labelledby": "input-number",
+            }}
+          />
         </Box>
+        <Button variant="contained" type="submit" sx={{ mt: 3 }} fullWidth>
+          Sign up
+        </Button>
+      </Form>
+      <Box sx={{ mt: 2 }}>
+        Do you have an account already?{" "}
+        <Link to="login">
+          Log in
+        </Link>
       </Box>
     </Container>
-  )
+  );
 }

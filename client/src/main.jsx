@@ -1,55 +1,65 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import * as ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import {
-  BrowserRouter
-} from "react-router-dom";
-
-const root = createRoot(document.getElementById("root"));
-
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
-
-/*
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import ErrorPage from "./Error-page.jsx";
+import Login from "./routes/Login.jsx";
+import Register from "./routes/Register.jsx";
+import ViewProfilePage from "./components/ViewProfilePage/ViewProfilePage";
+import WeekView from "./components/WeekView/WeekView";
+import { registerAction } from "./services/registerService.js";
+import { loginAction } from "./services/loginService.js";
+import {tokenDecode} from "./helpers/tokenDecode.js"
 
 const router = createBrowserRouter([
   {
+    id: "root",
     path: "/",
-    element: <Navigate to="login" />,
+    loader() {
+      // root route provides the user, if logged in
+      // here we would return the user object
+      const token = localStorage.getItem('token')
+      if (!token) return <Navigate to="/login" />;
+      return tokenDecode(token)
+    },
+    Component: App,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        Component: ViewProfilePage,
+        path: "profile",
+      },
+      {
+        Component: WeekView,
+        path: "week-view",
+      }
+    ]
   },
   {
     path: "/login",
-    element: <Login onLogin={authHandler}/>,
+    action: loginAction,
+    Component: Login,
   },
   {
     path: "/register",
-    element: <Register onRegister={signUpHandler}/>,
+    action: registerAction,
+    Component: Register,
   },
   {
-    path: "/user",
-    element: <User />,
-  },
-  {
-    path: "/",
-    element: <App />,
+    path: "/logout",
+    async action() {
+      // We signout in a "resource route" that we can hit from a fetcher.Form
+      //await signout();
+      //return redirect("/");
+      return null
+    },
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
   </React.StrictMode>
-);*/
+);
