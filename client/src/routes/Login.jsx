@@ -1,42 +1,25 @@
-import {Alert, Box, Button, Container, Link, TextField, Typography} from "@mui/material";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Form,
+  Link as RouterLink,
+} from "react-router-dom";
+import Header from "../components/Header/Header";
 
-export default function Login({onLogin}) {
-
-  //const navigate = useNavigate();
-
-  const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-
-    // clear the errors
-    setError("");
-
-    const userData = {
-      email,
-      password
-    }
-    onLogin(userData)
-  }
+export default function Login() {
 
   return (
-    <Container maxWidth="xs" sx={{mt: 2}}>
+    <Container maxWidth="xs" sx={{ mt: 2 }}>
+      <Header />
       <Typography variant="h5" component="h1" gutterBottom textAlign="center">
         Iniciar sesión
       </Typography>
-      {error ? <Alert severity="error" sx={{my: 2}}>{error}</Alert> : <></>}
-      <Box component="form" onSubmit={onSubmit}>
+      <Form method="post" replace>
         <TextField
           label="Email"
           variant="outlined"
           autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          sx={{mt: 1}}
+          name="email"
+          sx={{ mt: 1 }}
           fullWidth
           required
         />
@@ -45,17 +28,21 @@ export default function Login({onLogin}) {
           variant="outlined"
           type="password"
           autoComplete="new-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          sx={{mt: 3}}
+          name="password"
+          sx={{ mt: 3 }}
           fullWidth
           required
         />
-        <Button variant="contained" type="submit" sx={{mt: 3}} fullWidth>Login</Button>
-        <Box sx={{mt: 2}}>
-          Don&apos;t have an account yet? <Link href="/register">Register</Link>
-        </Box>
+        <Button variant="contained" type="submit" sx={{ mt: 3 }} fullWidth>
+          Login
+        </Button>
+      </Form>
+      <Box sx={{ mt: 2 }}>
+        Don&apos;t have an account yet?{" "}
+        <Button component={RouterLink} to="register">
+          Sign up
+        </Button>
       </Box>
     </Container>
-  )
+  );
 }

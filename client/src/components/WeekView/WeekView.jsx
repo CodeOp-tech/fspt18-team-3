@@ -1,68 +1,95 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import logo_babybump from "../../assets/logo_babybump.png";
 import "./WeekView.css";
+import { useRouteLoaderData } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
-const WeekView = ({/* userName, babyName, weeks*/}) => {
-  const [user, setUser] = useState("")
-  const [symptom, setSymptoms] = useState([{
-    "id":1,
-    "week_id": 3,
-    "symptom_name": "Hello",
-    "symptom_description": "You are welcome."
+const WeekView = () => {
+  const userId = useRouteLoaderData("root");
 
-  }])
-  const [advice, setAdvice] = useState([{
-    "id": 1,
-    "week_id": 3,
-    "advice_description": "You are welcome."
+  const [user, setUser] = useState("");
+  const [symptom, setSymptoms] = useState([
+    {
+      id: 1,
+      week_id: 3,
+      symptom_name: "Hello",
+      symptom_description: "You are welcome.",
+    },
+  ]);
+  const [advice, setAdvice] = useState([
+    {
+      id: 1,
+      week_id: 3,
+      advice_description: "You are welcome.",
+    },
+  ]);
+  const [weeks, setWeeks] = useState("");
 
-  }])
-  const [weeks, setWeeks] = useState("")
-  let weekId = 0
-  let currentWeek = 0
+  let weekId = 0;
 
   useEffect(() => {
     getUser();
-  },[])
+  }, []);
 
-  const countWeeks = (user) =>{
-    const dateToday = new Date().toISOString().slice(0,10);
-    const simpleDate = new Date(dateToday)
-    const creationDate = new Date(user.creation_date)
-    
-    const weeksAdded = (simpleDate-creationDate)/(1000*60*60*24*7)
-  
-    const result = weeksAdded + user.weeks_pregnant
-  
-    currentWeek = Math.round(result)
-    
-   return  Math.round(result)
-  }
-  
-  const getWeekId = (user) =>{
-  
-    weekId = countWeeks(user) - 2
-    return weekId
-  }
+  const countWeeks = (user) => {
+    const dateToday = new Date().toISOString().slice(0, 10);
+    const simpleDate = new Date(dateToday);
+    const creationDate = new Date(user.creation_date);
+    const weeksAdded = (simpleDate - creationDate) / (1000 * 60 * 60 * 24 * 7);
+    const result = weeksAdded + user.weeks_pregnant;
+    return Math.round(result);
+  };
 
-  const getUser = async () => {
- 
-    fetch(`http://localhost:5000/users/user/1`)//----->${user.id}
-    .then(response => response.json())
-    .then(user =>{
-        setUser(user[0]);
-        getWeeks(user[0]);
-        getSymptoms(user[0]);
-        getAdvice(user[0]);
+  const getWeekId = (user) => {
+    weekId = countWeeks(user) - 2;
+    return weekId;
+  };
+
+  const options = () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.log("Access token not found in localStorage.");
+      return;
+    }
+    return {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+  };
+
+  async function getUser() {
+    fetch(`http://localhost:5000/users/user/${userId}`, options())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error retrieving the user");
+        }
+        return response.json();
       })
-    .catch(err =>
-        setError(err))
-}
+      .then(async (user) => {
+        setUser(user[0]);
+        await Promise.all([
+          getWeeks(user[0]),
+          getSymptoms(user[0]),
+          getAdvice(user[0]),
+        ]);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 
-const getWeeks = async (user) => {
+  const getWeeks = async (user) => {
+    fetch(`http://localhost:5000/weeks/${countWeeks(user)}`, options())
+      .then((response) => response.json())
+      .then((week) => {
+        setWeeks(week[0]);
+      })
+      .catch(console.log);
+  };
 
+<<<<<<< HEAD
   fetch(`http://localhost:5000/weeks/${getWeekId(user)}`)
   .then(response => response.json())
   .then(week =>
@@ -93,7 +120,21 @@ const getAdvice = async (user) =>{
     .catch(err =>
         setError(err))
 }
+=======
+  const getSymptoms = async (user) => {
+    fetch(`http://localhost:5000/weeks/${getWeekId(user)}/symptoms`, options())
+      .then((response) => response.json())
+      .then((symptom) => setSymptoms(symptom))
+      .catch(console.log);
+  };
+>>>>>>> main
 
+  const getAdvice = async (user) => {
+    fetch(`http://localhost:5000/weeks/${getWeekId(user)}/advice`, options())
+      .then((response) => response.json())
+      .then((advice) => setAdvice(advice))
+      .catch(console.log);
+  };
 
   // Muestra la información de la semana seleccionada
   const displayWeekInfo = () => {
@@ -108,15 +149,15 @@ const getAdvice = async (user) =>{
         <p>{weeks.baby_development}</p>
 
         <h3>Síntomas</h3>
-        {symptom.map( symptom =>(
-          <div key = {symptom.id}>
+        {symptom.map((symptom) => (
+          <div key={symptom.id}>
             <h4>{symptom.symptom_name}</h4>
             <p>{symptom.symptom_description}</p>
           </div>
         ))}
         <h3>Consejos</h3>
-        {advice.map( advice =>(
-          <div key = {advice.id}>
+        {advice.map((advice) => (
+          <div key={advice.id}>
             <p>{advice.advice_description}</p>
           </div>
         ))}
@@ -125,13 +166,14 @@ const getAdvice = async (user) =>{
   };
 
   return (
-    <div className='info-weeks-view'>
+    <div className="info-weeks-view">
       <img src={logo_babybump} className="logo" alt="App logo" />
       <p>¡Hola {user.user_name}!</p>
       <p>
         {user.baby_name} ya tiene {countWeeks(user)} semanas.
       </p>
-      {displayWeekInfo()} {/* Llama a la función para mostrar la información de la semana */}
+      {displayWeekInfo()}{" "}
+      {/* Llama a la función para mostrar la información de la semana */}
     </div>
   );
 };

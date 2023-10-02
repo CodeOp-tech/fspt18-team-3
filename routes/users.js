@@ -1,41 +1,46 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
+const bcrypt = require("bcrypt");
+const userShouldBeLoggedIn = require("../middlewares/userShouldBeLoggedIn")
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+require("dotenv").config();
 
 /* POST USER */
-router.post("/user", async function(req, res){
-  const sql = `INSERT INTO users(user_name, mail, user_password, baby_name, creation_date, weeks_pregnant, photo_url) VALUES('${req.body.user_name}', '${req.body.mail}', '${req.body.user_password}', '${req.body.baby_name}', '${req.body.creation_date}', ${req.body.weeks_pregnant},'${req.body.user_name}')`
-
-  try{
+router.post("/user", async (req, res) => {
+  try {
+    const { user_name, mail, user_password, baby_name, creation_date, weeks_pregnant } = req.body;
+    const hashedPassword = await hashPassword(user_password);
+    
+    const sql = `
+      INSERT INTO users (user_name, mail, user_password, baby_name, creation_date, weeks_pregnant) 
+      VALUES ('${user_name}', '${mail}', '${hashedPassword}', '${baby_name}', '${creation_date}', ${weeks_pregnant});`;
+    
     await db(sql);
-    const result = await db("SELECT * FROM users")
-    res.send(result.data)
-  }catch(err){
-    res.status(500).send({ error: err.message });
+
+    const selectUserQuery = `SELECT * FROM users WHERE mail = '${mail}';`;
+    const result = await db(selectUserQuery);
+
+    res.send({ message: 'The user was registered!', data: result.data[0].id });
+  } catch (error) {
+    res.status(500).send({ error: error.message });
   }
-})
+});
 
 /*GET USER*/
-router.get("/user/:id", async function(req, res){
-  try{
-    const result = await db(`SELECT * FROM users WHERE id = ${req.params.id};`)
-    res.send(result.data)
-  }catch(err){
-    res.status(500).send({ error: err.message })
+router.get("/user/:id", userShouldBeLoggedIn, async function (req, res) {
+  try {
+    const result = await db(`SELECT * FROM users WHERE id = ${req.params.id};`);
+    res.send(result.data);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
   }
-})
+});
 
 /*PUT USER*/
-router.put("/user/:id", async (req, res) => {
+router.put("/user/:id", userShouldBeLoggedIn, async (req, res) => {
   try {
-    const result = await db(
-      `SELECT * FROM users WHERE id = ${req.params.id};`
-    );
+    const result = await db(`SELECT * FROM users WHERE id = ${req.params.id};`);
 
     if (!result) {
       res.status(404).send();
@@ -46,7 +51,9 @@ router.put("/user/:id", async (req, res) => {
       `UPDATE users SET user_name = '${req.body.user_name}', mail = '${req.body.mail}', user_password = '${req.body.user_password}', baby_name = '${req.body.baby_name}', weeks_pregnant = ${req.body.weeks_pregnant}, photo_url = '${req.body.photo_url}' WHERE id = ${req.params.id};`
     );
 
-    const updatedUser = await db(`SELECT * FROM users WHERE id = ${req.params.id};`);
+    const updatedUser = await db(
+      `SELECT * FROM users WHERE id = ${req.params.id};`
+    );
 
     res.send(updatedUser.data);
   } catch (err) {
@@ -55,11 +62,9 @@ router.put("/user/:id", async (req, res) => {
 });
 
 /*DELETE USER*/
-router.delete("/users/:id", async (req, res) => {
+router.delete("/users/:id", userShouldBeLoggedIn, async (req, res) => {
   try {
-    const result = await db(
-      `SELECT * FROM users WHERE id = ${req.params.id};`
-    );
+    const result = await db(`SELECT * FROM users WHERE id = ${req.params.id};`);
 
     if (!result) {
       res.status(404).send();
@@ -75,5 +80,14 @@ router.delete("/users/:id", async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 });
+
+
+/************************* HELPERS *****************************/
+
+async function hashPassword(password) {
+  const { BCRYPT_WORK_FACTOR } = process.env;
+  const hashedPassword = await bcrypt.hash(password, Number(BCRYPT_WORK_FACTOR));
+  return hashedPassword;
+}
 
 module.exports = router;
