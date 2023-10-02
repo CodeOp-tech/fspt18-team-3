@@ -3,11 +3,12 @@ const cors = require('cors')
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var logger = require('morgan'); 
 
 
 var usersRouter = require('./routes/users');
 var weeksRouter = require('./routes/weeks');
+var authRouter = require('./routes/auth')
 
 var app = express();
 
@@ -22,5 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/weeks', weeksRouter);
+app.use('/auth', authRouter);
 
 module.exports = app;
