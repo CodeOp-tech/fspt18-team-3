@@ -28,9 +28,9 @@ router.post("/user", async (req, res) => {
 });
 
 /*GET USER*/
-router.get("/user/:id", userShouldBeLoggedIn, async function (req, res) {
+router.get("/user", userShouldBeLoggedIn, async function (req, res) {
   try {
-    const result = await db(`SELECT * FROM users WHERE id = ${req.params.id};`);
+    const result = await db(`SELECT * FROM users WHERE id = ${req.user_id};`);
     res.send(result.data);
   } catch (err) {
     res.status(500).send({ error: err.message });
@@ -40,7 +40,7 @@ router.get("/user/:id", userShouldBeLoggedIn, async function (req, res) {
 /*PUT USER*/
 router.put("/user/:id", userShouldBeLoggedIn, async (req, res) => {
   try {
-    const result = await db(`SELECT * FROM users WHERE id = ${req.params.id};`);
+    const result = await db(`SELECT * FROM users WHERE id = ${req.body.id};`);
 
     if (!result) {
       res.status(404).send();

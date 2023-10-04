@@ -2,14 +2,14 @@ import React from "react";
 import * as ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
 import ErrorPage from "./Error-page.jsx";
 import Login from "./routes/Login.jsx";
 import Register from "./routes/Register.jsx";
 import ViewProfilePage from "./components/ViewProfilePage/ViewProfilePage";
 import WeekView from "./components/WeekView/WeekView";
 import { registerAction } from "./services/registerService.js";
-import { loginAction } from "./services/loginService.js";
+import { loginAction, loginLoader } from "./services/loginService.js";
 import {tokenDecode} from "./helpers/tokenDecode.js"
 
 const router = createBrowserRouter([
@@ -20,7 +20,9 @@ const router = createBrowserRouter([
       // root route provides the user, if logged in
       // here we would return the user object
       const token = localStorage.getItem('token')
-      if (!token) return <Navigate to="/login" />;
+      if (!token) return redirect("/login");
+      //return redirect("/profile")
+      //return token
       return tokenDecode(token)
     },
     Component: App,
@@ -39,6 +41,7 @@ const router = createBrowserRouter([
   {
     path: "/login",
     action: loginAction,
+    loader: loginLoader,
     Component: Login,
   },
   {
