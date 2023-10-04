@@ -10,7 +10,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useRouteLoaderData } from "react-router-dom";
 
 const ViewProfilePage = () => {
-  let user_id = useRouteLoaderData("root");
+  let userId = useRouteLoaderData("root");
+
   const [user, setUser] = useState("");
   const [images, setImages] = useState([
     {
@@ -28,8 +29,8 @@ const ViewProfilePage = () => {
   ]);
 
   useEffect(() => {
-    getUser();
-  }, []);
+    getUser(); 
+  }, []); 
 
   async function getUser() {
     const token = localStorage.getItem("token");
@@ -38,7 +39,7 @@ const ViewProfilePage = () => {
       console.log("Access token not found in localStorage.");
     }
 
-    fetch(`http://localhost:5000/users/user/${user_id}`, {
+    fetch(`http://localhost:5000/users/user`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
