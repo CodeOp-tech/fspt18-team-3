@@ -10,9 +10,14 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useRouteLoaderData } from "react-router-dom";
 
 const ViewProfilePage = () => {
-  let userId = useRouteLoaderData("root");
+  let user_id = useRouteLoaderData("root");
 
   const [user, setUser] = useState("");
+  const [selectedFile, setSelectedFile] = useState({
+    name: "",
+    photo_description: "",
+    date_posted: ""
+  })
   const [images, setImages] = useState([
     {
       id: 1,
@@ -30,6 +35,7 @@ const ViewProfilePage = () => {
 
   useEffect(() => {
     getUser(); 
+    getPhotos()
   }, []); 
 
   async function getUser() {
@@ -72,6 +78,40 @@ const ViewProfilePage = () => {
     return 40 - countWeeks();
   };
 
+  const onFileChange = (event) => {
+    setSelectedFile({
+      name: event.target.files[0],
+      photo_description: "",
+      date_posted:new Date().toISOString().slice(0, 10)
+    });
+  };
+
+  const onFileUpload = async() =>{
+    const formData = new FormData();
+    formData.append("photofile", selectedFile, selectedFile.name)
+
+    try{
+      const res = await axios.post(`/photos/${user_id}/${week_id}`, formData,{
+        headers:{
+          "Content-Type":"multipart-form/data",
+        }
+      });
+      console.log(res);
+      getPhotos();
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const getPhotos = async() => {
+    try{
+      const res = await axios.get("/photos")
+      setImages(res.data);
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <div>
       <div className="profile-text">
@@ -106,13 +146,17 @@ const ViewProfilePage = () => {
         <div className="profile-grid">
           {images.map((image) => (
             <div className="profile-grid-item" key={image.id}>
-              <img src={image.image}></img>
+              <img src={`/photos/${images.path}`}></img>
             </div>
           ))}
         </div>
         <Button variant="outlined" type="button">
           Añade otra imagen
         </Button>
+      </div>
+      <div>
+        <inptu type="file" onChange={onFileChange}/>
+        <button onClick={onFileUpload}>Subir</button>
       </div>
     </div>
   );

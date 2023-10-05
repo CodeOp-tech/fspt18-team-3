@@ -88,45 +88,12 @@ const WeekView = () => {
       .catch(console.log);
   };
 
-<<<<<<< HEAD
-  fetch(`http://localhost:5000/weeks/${getWeekId(user)}`)
-  .then(response => response.json())
-  .then(week =>
-      setWeeks(week[0])
-  )
-  .catch(err =>
-      setError(err))
-}
-
-const getSymptoms = async (user) =>{
-
-  fetch(`http://localhost:5000/weeks/${getWeekId(user)}/symptoms`)
-    .then(response => response.json())
-    .then(symptom =>
-        setSymptoms(symptom)
-    )
-    .catch(err =>
-        setError(err))
-} 
-
-const getAdvice = async (user) =>{
-
-  fetch(`http://localhost:5000/weeks/${getWeekId(user)}/advice`)
-    .then(response => response.json())
-    .then(advice =>
-        setAdvice(advice)
-        )
-    .catch(err =>
-        setError(err))
-}
-=======
   const getSymptoms = async (user) => {
     fetch(`http://localhost:5000/weeks/${getWeekId(user)}/symptoms`, options())
       .then((response) => response.json())
       .then((symptom) => setSymptoms(symptom))
       .catch(console.log);
   };
->>>>>>> main
 
   const getAdvice = async (user) => {
     fetch(`http://localhost:5000/weeks/${getWeekId(user)}/advice`, options())
