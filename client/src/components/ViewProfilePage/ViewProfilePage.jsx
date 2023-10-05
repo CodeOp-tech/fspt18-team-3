@@ -10,7 +10,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useRouteLoaderData } from "react-router-dom";
 
 const ViewProfilePage = () => {
-  let user_id = useRouteLoaderData("root");
+  let userId = useRouteLoaderData("root");
+
   const [user, setUser] = useState("");
   const [images, setImages] = useState([
     {
@@ -28,8 +29,8 @@ const ViewProfilePage = () => {
   ]);
 
   useEffect(() => {
-    getUser();
-  }, []);
+    getUser(); 
+  }, []); 
 
   async function getUser() {
     const token = localStorage.getItem("token");
@@ -38,14 +39,6 @@ const ViewProfilePage = () => {
       console.log("Access token not found in localStorage.");
     }
 
-<<<<<<< HEAD
-    const countWeeks = (user) =>{
-        const dateToday = new Date().toISOString().slice(0,10);
-        const simpleDate = new Date(dateToday)
-        const creationDate = new Date(user.creation_date)
-        
-        const weeksAdded = (simpleDate-creationDate)/(1000*60*60*24*7)
-=======
     fetch(`http://localhost:5000/users/user/${user_id}`, {
       method: "GET",
       headers: {
@@ -65,7 +58,6 @@ const ViewProfilePage = () => {
         console.error("Error:", error);
       });
   }
->>>>>>> main
 
   const countWeeks = () => {
     const dateToday = new Date().toISOString().slice(0, 10);
@@ -76,27 +68,6 @@ const ViewProfilePage = () => {
     return Math.round(result);
   };
 
-<<<<<<< HEAD
-    const countWeeksLeft = (user) =>{
-        return 40 - countWeeks(user)
-    }
-
-    return <div>
-        <div className="profile-text">
-            <div className="profile-logo-image__text">
-                <div className="profile-logo"><img src={logo_babybump}></img></div>
-                <div className="profile-photo"><img src={user.photo_url}></img></div>
-            </div>
-            <div className="profile-info">
-                <h2>{user.user_name}</h2>
-                <p>Tu bebé ya tiene {countWeeks(user)} semanas.</p>
-                <p>Quedan aproximadamente {countWeeksLeft(user)} para tu parto.</p>
-            </div>
-            <div className="profile-buttons">
-                <button type="button">Saber más sobre mi embarazo</button>
-                <button type="button">Editar</button>
-            </div>
-=======
   const countWeeksLeft = () => {
     return 40 - countWeeks();
   };
@@ -115,12 +86,11 @@ const ViewProfilePage = () => {
               <AccountCircleIcon sx={{ fontSize: "100px" }} />
             )}
           </div>
->>>>>>> main
         </div>
         <div className="profile-info">
           {user ? <h2>{user.user_name}</h2> : <h2>Desconocido</h2>}
-          <p>Tu bebé ya tiene {countWeeks()} semanas.</p>
-          <p>Quedan aproximadamente {countWeeksLeft()} para tu parto.</p>
+          <p>Tu bebé ya tiene {countWeeks(user)} semanas.</p>
+          <p>Quedan aproximadamente {countWeeksLeft(user)} para tu parto.</p>
         </div>
         <div className="profile-buttons">
           <Button variant="outlined" component={RouterLink} to="/week-view">

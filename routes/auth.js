@@ -25,7 +25,7 @@ router.post("/", async function (req, res) {
       );
 
       if (passwordMatches) {
-        const payload = { userId: result.data[0].id };
+        const payload = { user_id: result.data[0].id };
         const token = jwt.sign(payload, SECRET_KEY);
         res.status(200).send({ message: "Successful authentication", token, userId: result.data[0].id });
       } else {

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import logo_babybump from "../../assets/logo_babybump.png";
 import "./WeekView.css";
-import { useRouteLoaderData } from "react-router-dom";
 
 const WeekView = () => {
-  const userId = useRouteLoaderData("root");
+  const [expanded, setExpanded] = useState(false); // NUEVA LÍNEA
 
   const [user, setUser] = useState("");
   const [symptom, setSymptoms] = useState([
@@ -60,7 +59,7 @@ const WeekView = () => {
   };
 
   async function getUser() {
-    fetch(`http://localhost:5000/users/user/${userId}`, options())
+    fetch(`http://localhost:5000/users/user`, options())
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error retrieving the user");
@@ -136,31 +135,50 @@ const getAdvice = async (user) =>{
       .catch(console.log);
   };
 
-  // Muestra la información de la semana seleccionada
+  const toggleExpanded = () => {
+    // NUEVA LÍNEA
+    setExpanded(!expanded); // NUEVA LÍNEA
+  }; // NUEVA LÍNEA
   const displayWeekInfo = () => {
-    // Aquí tengo que mostrar la información de la semana con selectedWeekInfo (de PregnancyForm)
     return (
       <div>
         {/* Muestra la información de la semana seleccionada */}
-        <p>Semana {countWeeks(user)}: Desarrollo del bebé, tamaño, etc.</p>
-        <img src={weeks.baby_image} alt={weeks.baby_size} />
-        <h3>Tu bebé ya es del tamaño de {weeks.baby_size}</h3>
-
-        <p>{weeks.baby_development}</p>
-
-        <h3>Síntomas</h3>
-        {symptom.map((symptom) => (
-          <div key={symptom.id}>
-            <h4>{symptom.symptom_name}</h4>
-            <p>{symptom.symptom_description}</p>
+        <div className="week-info">
+            <p>Semana {countWeeks(user)}: Desarrollo del bebé, tamaño, etc.</p>
+            <img
+              src={weeks.baby_image}
+              alt={weeks.baby_size}
+              className="week-image"
+            />
+            <h3>Tu bebé ya es del tamaño de {weeks.baby_size}</h3>
+            <div className={expanded ? "showFullContent" : "hideFullContent"}>
+              <p>{weeks.baby_development}</p>
+            </div>
+            <button onClick={toggleExpanded} className="toggle-button">
+              {expanded ? "Mostrar menos" : "Leer más"}
+            </button>
           </div>
-        ))}
-        <h3>Consejos</h3>
-        {advice.map((advice) => (
-          <div key={advice.id}>
-            <p>{advice.advice_description}</p>
-          </div>
-        ))}
+
+        <div className="symptom-container">
+          <h3>Síntomas</h3>
+          {symptom.map((symptom) => (
+            <div key={symptom.id}>
+              <p className="symptom-name">{symptom.symptom_name}</p>
+              <p className="symptom-description">
+                {symptom.symptom_description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="advice-container">
+          <h3>Consejos</h3>
+          {advice.map((advice) => (
+            <div key={advice.id}>
+              <p className="advice-description">{advice.advice_description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
@@ -168,8 +186,8 @@ const getAdvice = async (user) =>{
   return (
     <div className="info-weeks-view">
       <img src={logo_babybump} className="logo" alt="App logo" />
-      <p>¡Hola {user.user_name}!</p>
-      <p>
+      <p className="user-greeting">¡Hola {user.user_name}!</p>
+      <p className="user-info">
         {user.baby_name} ya tiene {countWeeks(user)} semanas.
       </p>
       {displayWeekInfo()}{" "}
