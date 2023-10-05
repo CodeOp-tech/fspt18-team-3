@@ -106,11 +106,11 @@ const ViewProfilePage = () => {
         <div className="profile-grid">
           {images.map((image) => (
             <div className="profile-grid-item" key={image.id}>
-              <img src={image.image}></img>
+              <img src={image.image} alt={`Image ${image.id}`}></img>
             </div>
           ))}
         </div>
-        <Button variant="outlined" type="button">
+        <Button variant="outlined" type="button" className="MuiButton-addImage">
           Añade otra imagen
         </Button>
       </div>

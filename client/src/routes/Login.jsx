@@ -4,43 +4,63 @@ import {
   Link as RouterLink,
 } from "react-router-dom";
 import Header from "../components/Header/Header";
+import "./Login.css"; 
 
 export default function Login() {
+  const signUpButtonStyle = {
+    backgroundColor: "transparent",
+    color: "rgb(81, 167, 144)",
+    border: "none",
+    borderRadius: "8px",
+    padding: "8px",
+    fontSize: "14px",
+    textTransform: "uppercase",
+    cursor: "pointer",
+  };
+
+  const inputStyle = {
+    marginTop: "1rem", // Ajusta el margen superior de los campos de entrada
+    width: "100%",
+  };
 
   return (
-    <Container maxWidth="xs" sx={{ mt: 2 }}>
+    <Container maxWidth="xs"  className="Container">
       <Header />
-      <Typography variant="h5" component="h1" gutterBottom textAlign="center">
+      <Typography variant="h5" component="h1" gutterBottom className="Typography">
         Iniciar sesión
       </Typography>
-      <Form method="post" replace>
+      <Form method="post" replace className="Form">
         <TextField
           label="Email"
           variant="outlined"
           autoComplete="email"
           name="email"
-          sx={{ mt: 1 }}
+          style={inputStyle}
           fullWidth
           required
         />
         <TextField
-          label="Password"
+          label="Contraseña"
           variant="outlined"
           type="password"
           autoComplete="new-password"
           name="password"
-          sx={{ mt: 3 }}
+          style={inputStyle}
           fullWidth
           required
         />
-        <Button variant="contained" type="submit" sx={{ mt: 3 }} fullWidth>
+        <Button variant="contained" type="submit" className="Button">
           Login
         </Button>
       </Form>
-      <Box sx={{ mt: 2 }}>
-        Don&apos;t have an account yet?{" "}
-        <Button component={RouterLink} to="register">
-          Sign up
+      <Box className="SignUpText">
+        ¿Todavía no tienes una cuenta?{" "}
+        <Button 
+          style={signUpButtonStyle}
+          component={RouterLink} 
+          to="register" 
+          >
+          Regístrate
         </Button>
       </Box>
     </Container>

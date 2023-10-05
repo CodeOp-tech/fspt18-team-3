@@ -1,0 +1,61 @@
+.Container {
+    max-width: 380px;
+    margin-top: 2rem;
+  }
+  
+  .Typography {
+    text-align: center;
+  }
+  
+  .TextField {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+  
+  .Container .Form .Button {
+    margin-top: 1rem;
+    background-color: rgb(240, 149, 149);
+    color: rgb(255, 255, 255);
+    border-color: pink;
+    padding: 8px; /* Ajusta el espacio interno del botón */
+    font-size: 14px; /* Ajusta el tamaño de fuente del botón */
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    max-width: 150px; /* Ajusta el ancho máximo del botón */
+    width: 100%; 
+  }
+  
+  .Container .Form .Button:hover {
+    background-color: rgb(184, 219, 184);
+    color: white;
+    border-color: rgb(81, 167, 144);
+  }
+  
+  .Container .Form .Button:active {
+    background-color: rgb(252, 103, 128);
+    color: white;
+    border-color: pink;
+    outline: none;
+  }
+
+  .SignUpText {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .Container .Form .ButtonSignUp {
+    background-color: transparent; 
+    color: rgb(240, 149, 149); 
+    border: none; 
+    padding: 0;
+    font-size: 14px; 
+    text-transform: uppercase;
+    border-radius: 8px; 
+    cursor: pointer; 
+    width: auto; 
+  }
+  
+  .Container .Form .ButtonSignUp:hover {
+    background-color: rgba(184, 219, 184, 0.2); 
+    color: rgb(240, 149, 149); 
+  }

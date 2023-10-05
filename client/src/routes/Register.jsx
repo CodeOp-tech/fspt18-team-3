@@ -7,6 +7,7 @@ import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import MuiInput from "@mui/material/Input";
 import Header from "../components/Header/Header";
+import "./Register.css";
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -34,14 +35,14 @@ export default function Register() {
   };
 
   return (
-    <Container maxWidth="xs" sx={{ mt: 2 }}>
+    <Container maxWidth="xs" className="Container">
       <Header />
-      <Typography variant="h5" component="h1" gutterBottom textAlign="center">
+      <Typography variant="h5" component="h1" gutterBottom className="Typography">
         Crear cuenta
       </Typography>
-      <Form method="post" replace>
+      <Form method="post" replace className="Form">
         <TextField
-          label="Username"
+          label="Nombre de usuario"
           variant="outlined"
           name="username"
           value={username}
@@ -61,7 +62,7 @@ export default function Register() {
           required
         />
         <TextField
-          label="Password"
+          label="Contraseña"
           variant="outlined"
           type="password"
           name="password"
@@ -72,7 +73,7 @@ export default function Register() {
           required
         />
         <TextField
-          label="Confirm password"
+          label="Confirma tu contraseña"
           variant="outlined"
           type="password"
           name="rePassword"
@@ -83,7 +84,7 @@ export default function Register() {
           required
         />
         <TextField
-          label="Baby name"
+          label="Nombre de tu bebé"
           variant="outlined"
           name="babyName"
           value={babyName}
@@ -99,7 +100,7 @@ export default function Register() {
           }}
         >
           <Typography id="input-number">
-            How many weeks are you pregnant?
+            ¿De cuántas semanas estás embarazada?
           </Typography>
           <Input
             value={weeks}
@@ -116,14 +117,14 @@ export default function Register() {
             }}
           />
         </Box>
-        <Button variant="contained" type="submit" sx={{ mt: 3 }} fullWidth>
-          Sign up
+        <Button variant="contained" type="submit" className="Button">
+          Registrarme
         </Button>
       </Form>
-      <Box sx={{ mt: 2 }}>
-        Do you have an account already?{" "}
-        <Link to="login">
-          Log in
+      <Box className="DoYouHaveAccount">
+        ¿Ya tienes una cuenta?{" "}
+        <Link to="login" className="Link">
+          Inicia sesión
         </Link>
       </Box>
     </Container>

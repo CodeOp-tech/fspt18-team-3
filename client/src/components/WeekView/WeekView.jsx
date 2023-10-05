@@ -107,6 +107,12 @@ const WeekView = () => {
     setExpanded(!expanded); // NUEVA LÍNEA
   }; // NUEVA LÍNEA
   const displayWeekInfo = () => {
+    const [adviceExpanded, setAdviceExpanded] = useState(false); // nuevoooo 2
+
+    const toggleAdviceExpanded = () => { //nuevo 2
+      setAdviceExpanded(!adviceExpanded); //nuevo 2
+    }; //nuevo 2
+
     return (
       <div>
         {/* Muestra la información de la semana seleccionada */}
@@ -139,16 +145,23 @@ const WeekView = () => {
         </div>
 
         <div className="advice-container">
-          <h3>Consejos</h3>
+        <h3>Consejos</h3>
+        <div className={`advice-content ${adviceExpanded ? 'expanded' : ''}`}>
           {advice.map((advice) => (
             <div key={advice.id}>
-              <p className="advice-description">{advice.advice_description}</p>
+              <p className="advice-description">
+                {advice.advice_description}
+              </p>
             </div>
           ))}
         </div>
+        <button onClick={toggleAdviceExpanded} className="toggle-button">
+          {adviceExpanded ? "Mostrar menos" : "Leer más"}
+        </button>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
   return (
     <div className="info-weeks-view">
