@@ -95,3 +95,28 @@ img {
   text-decoration: underline;
 }
 
+.advice-container {
+  margin-bottom: 20px;
+}
+
+.advice-content {
+  max-height: 90px; /* Altura máxima inicial para mostrar */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.advice-content.expanded {
+  max-height: none; /* Mostrar todo el contenido cuando está expandido */
+}
+
+.advice-container button {
+  background: none;
+  border: none;
+  color: #FF6B6B; /* Color rosado */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.advice-container button:hover {
+  text-decoration: underline;
+}

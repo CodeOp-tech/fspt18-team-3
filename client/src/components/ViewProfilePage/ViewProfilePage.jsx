@@ -150,7 +150,7 @@ const ViewProfilePage = () => {
             </div>
           ))}
         </div>
-        <Button variant="outlined" type="button">
+        <Button variant="outlined" type="button" className="MuiButton-addImage">
           Añade otra imagen
         </Button>
       </div>
