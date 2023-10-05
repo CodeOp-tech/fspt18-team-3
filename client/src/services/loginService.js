@@ -5,7 +5,7 @@ async function loginAction({ request }) {
   let email = formData.get("email");
   let password = formData.get("password");
 
-  fetch(`http://localhost:5000/auth`, {
+  return fetch(`http://localhost:5000/auth`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,6 +16,8 @@ async function loginAction({ request }) {
     .then((authData) => {
       console.log(authData)
       localStorage.setItem('token', authData.token)
+      let redirectTo = formData.get("redirectTo");
+    return redirect(redirectTo || `/profile`);
     })
     .catch((error) => {
       return {
@@ -23,8 +25,7 @@ async function loginAction({ request }) {
       };
     });
 
-    let redirectTo = formData.get("redirectTo");
-    return redirect(redirectTo || `/profile`);
+    
 }
 async function loginLoader() {
   return localStorage.getItem('token')

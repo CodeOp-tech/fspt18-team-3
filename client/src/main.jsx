@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       if (!token) return redirect("/login");
       //return redirect("/profile")
       //return token
-      return tokenDecode(token)
+      return token
     },
     Component: App,
     errorElement: <ErrorPage />,

@@ -13,6 +13,11 @@ const ViewProfilePage = () => {
   let userId = useRouteLoaderData("root");
 
   const [user, setUser] = useState("");
+  const [selectedFile, setSelectedFile] = useState({
+    name: "",
+    photo_description: "",
+    date_posted: ""
+  })
   const [images, setImages] = useState([
     {
       id: 1,
@@ -30,6 +35,7 @@ const ViewProfilePage = () => {
 
   useEffect(() => {
     getUser(); 
+    getPhotos()
   }, []); 
 
   async function getUser() {
@@ -72,6 +78,40 @@ const ViewProfilePage = () => {
     return 40 - countWeeks();
   };
 
+  const onFileChange = (event) => {
+    setSelectedFile({
+      name: event.target.files[0],
+      photo_description: "",
+      date_posted:new Date().toISOString().slice(0, 10)
+    });
+  };
+
+  const onFileUpload = async() =>{
+    const formData = new FormData();
+    formData.append("photofile", selectedFile, selectedFile.name)
+
+    try{
+      const res = await axios.post(`/photos/${user_id}/${week_id}`, formData,{
+        headers:{
+          "Content-Type":"multipart-form/data",
+        }
+      });
+      console.log(res);
+      getPhotos();
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const getPhotos = async() => {
+    try{
+      const res = await axios.get("/photos")
+      setImages(res.data);
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <div>
       <div className="profile-text">
@@ -89,8 +129,8 @@ const ViewProfilePage = () => {
         </div>
         <div className="profile-info">
           {user ? <h2>{user.user_name}</h2> : <h2>Desconocido</h2>}
-          <p>Tu bebé ya tiene {countWeeks()} semanas.</p>
-          <p>Quedan aproximadamente {countWeeksLeft()} para tu parto.</p>
+          <p>Tu bebé ya tiene {countWeeks(user)} semanas.</p>
+          <p>Quedan aproximadamente {countWeeksLeft(user)} para tu parto.</p>
         </div>
         <div className="profile-buttons">
           <Button variant="outlined" component={RouterLink} to="/week-view">
@@ -106,7 +146,7 @@ const ViewProfilePage = () => {
         <div className="profile-grid">
           {images.map((image) => (
             <div className="profile-grid-item" key={image.id}>
-              <img src={image.image} alt={`Image ${image.id}`}></img>
+              <img src={`/photos/${images.path}`}></img>
             </div>
           ))}
         </div>
@@ -114,8 +154,14 @@ const ViewProfilePage = () => {
           Añade otra imagen
         </Button>
       </div>
+      <div>
+        <inptu type="file" onChange={onFileChange}/>
+        <button onClick={onFileUpload}>Subir</button>
+      </div>
     </div>
   );
 };
 
 export default ViewProfilePage;
+
+
