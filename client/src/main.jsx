@@ -10,7 +10,6 @@ import ViewProfilePage from "./components/ViewProfilePage/ViewProfilePage";
 import WeekView from "./components/WeekView/WeekView";
 import { registerAction } from "./services/registerService.js";
 import { loginAction, loginLoader } from "./services/loginService.js";
-import {tokenDecode} from "./helpers/tokenDecode.js"
 
 const router = createBrowserRouter([
   {
