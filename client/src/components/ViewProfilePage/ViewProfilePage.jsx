@@ -1,41 +1,20 @@
 import { useEffect, useState } from "react";
 import logo_babybump from "../../assets/logo_babybump.png";
 import "./ViewProfilePage.css";
-import img1 from "../../images/img1.jpg";
-import img2 from "../../images/img2.jpg";
-import img3 from "../../images/img3.jpg";
 import { Link as RouterLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useRouteLoaderData } from "react-router-dom";
+import Gallery from '../Gallery/Gallery.jsx'
 
 const ViewProfilePage = () => {
   let userId = useRouteLoaderData("root");
 
   const [user, setUser] = useState("");
-  const [selectedFile, setSelectedFile] = useState({
-    name: "",
-    photo_description: "",
-    date_posted: ""
-  })
-  const [images, setImages] = useState([
-    {
-      id: 1,
-      image: img1,
-    },
-    {
-      id: 2,
-      image: img2,
-    },
-    {
-      id: 3,
-      image: img3,
-    },
-  ]);
 
   useEffect(() => {
     getUser(); 
-    getPhotos()
+    
   }, []); 
 
   async function getUser() {
@@ -58,14 +37,17 @@ const ViewProfilePage = () => {
         return response.json();
       })
       .then((user) => {
-        setUser(user[0]);
+        setUser(user[0]),
+        console.log(user[0])
+        getWeekId(user)
+        //getPhotos(user);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }
 
-  const countWeeks = () => {
+  const countWeeks = (user) => {
     const dateToday = new Date().toISOString().slice(0, 10);
     const simpleDate = new Date(dateToday);
     const creationDate = new Date(user.creation_date);
@@ -74,46 +56,16 @@ const ViewProfilePage = () => {
     return Math.round(result);
   };
 
-  const countWeeksLeft = () => {
-    return 40 - countWeeks();
+  const countWeeksLeft = (user) => {
+    return 40 - countWeeks(user);
   };
 
-  const onFileChange = (event) => {
-    setSelectedFile({
-      name: event.target.files[0],
-      photo_description: "",
-      date_posted:new Date().toISOString().slice(0, 10)
-    });
-  };
-
-  const onFileUpload = async() =>{
-    const formData = new FormData();
-    formData.append("photofile", selectedFile, selectedFile.name)
-
-    try{
-      const res = await axios.post(`/photos/${user_id}/${week_id}`, formData,{
-        headers:{
-          "Content-Type":"multipart-form/data",
-        }
-      });
-      console.log(res);
-      getPhotos();
-    }catch(err){
-      console.log(err);
-    }
-  }
-
-  const getPhotos = async() => {
-    try{
-      const res = await axios.get("/photos")
-      setImages(res.data);
-    }catch(err){
-      console.log(err)
-    }
+  const getWeekId = (user) => {
+    return countWeeks(user) -2
   }
 
   return (
-    <div>
+    
       <div className="profile-text">
         <div className="profile-logo-image__text">
           <div className="profile-logo">
@@ -140,25 +92,10 @@ const ViewProfilePage = () => {
             Editar
           </Button>
         </div>
+        <Gallery userId ={user.user_id} weekId={getWeekId(user)}/>
       </div>
-      <div className="profile-galery">
-        <h3>Galería de mi embarazo</h3>
-        <div className="profile-grid">
-          {images.map((image) => (
-            <div className="profile-grid-item" key={image.id}>
-              <img src={`/photos/${images.path}`}></img>
-            </div>
-          ))}
-        </div>
-        <Button variant="outlined" type="button">
-          Añade otra imagen
-        </Button>
-      </div>
-      <div>
-        <inptu type="file" onChange={onFileChange}/>
-        <button onClick={onFileUpload}>Subir</button>
-      </div>
-    </div>
+     
+    
   );
 };
 
