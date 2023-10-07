@@ -7,17 +7,17 @@ import img3 from "../../images/img3.jpg";
 import { Link as RouterLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useRouteLoaderData } from "react-router-dom";
+import AuthStatus from "../AuthStatus/AuthStatus";
+import axios from "axios";
+import { getUser, countWeeks, countWeeksLeft, getWeekId } from "../../services/pregnancyService";
 
 const ViewProfilePage = () => {
-  let userId = useRouteLoaderData("root");
-
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState();
   const [selectedFile, setSelectedFile] = useState({
     name: "",
     photo_description: "",
-    date_posted: ""
-  })
+    date_posted: "",
+  });
   const [images, setImages] = useState([
     {
       id: 1,
@@ -34,83 +34,53 @@ const ViewProfilePage = () => {
   ]);
 
   useEffect(() => {
-    getUser(); 
-    getPhotos()
-  }, []); 
-
-  async function getUser() {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      console.log("Access token not found in localStorage.");
-    }
-
-    fetch(`http://localhost:5000/users/user`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error retrieving the user");
-        }
-        return response.json();
-      })
-      .then((user) => {
-        setUser(user[0]);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }
-
-  const countWeeks = () => {
-    const dateToday = new Date().toISOString().slice(0, 10);
-    const simpleDate = new Date(dateToday);
-    const creationDate = new Date(user.creation_date);
-    const weeksAdded = (simpleDate - creationDate) / (1000 * 60 * 60 * 24 * 7);
-    const result = weeksAdded + user.weeks_pregnant;
-    return Math.round(result);
-  };
-
-  const countWeeksLeft = () => {
-    return 40 - countWeeks();
-  };
+    const fetchData = async () => {
+      try {
+        const user = await getUser();
+        console.log(user)
+        setUser(user);
+        await getPhotos();
+      } catch (error) {
+        console.error("Error fetching user or photos:", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
 
   const onFileChange = (event) => {
     setSelectedFile({
       name: event.target.files[0],
       photo_description: "",
-      date_posted:new Date().toISOString().slice(0, 10)
+      date_posted: new Date().toISOString().slice(0, 10),
     });
   };
 
-  const onFileUpload = async() =>{
+  const onFileUpload = async () => {
     const formData = new FormData();
-    formData.append("photofile", selectedFile, selectedFile.name)
+    formData.append("photofile", selectedFile, selectedFile.name);
 
-    try{
-      const res = await axios.post(`/photos/${user_id}/${week_id}`, formData,{
-        headers:{
-          "Content-Type":"multipart-form/data",
-        }
+    try {
+      const res = await axios.post(`/photos/${user_id}/${week_id}`, formData, {
+        headers: {
+          "Content-Type": "multipart-form/data",
+        },
       });
       console.log(res);
       getPhotos();
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
-  const getPhotos = async() => {
-    try{
-      const res = await axios.get("/photos")
+  const getPhotos = async () => {
+    try {
+      const res = await axios.get("/photos");
       setImages(res.data);
-    }catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   return (
     <div>
@@ -119,12 +89,15 @@ const ViewProfilePage = () => {
           <div className="profile-logo">
             <img src={logo_babybump}></img>
           </div>
-          <div className="profile-photo">
-            {user ? (
-              <img src={user.photo_url}></img>
-            ) : (
-              <AccountCircleIcon sx={{ fontSize: "100px" }} />
-            )}
+          <div>
+            <div className="profile-photo">
+              {user?.photo_url ? (
+                <img src={user.photo_url}></img>
+              ) : (
+                <AccountCircleIcon sx={{ fontSize: "100px" }} />
+              )}
+            </div>
+            <AuthStatus />
           </div>
         </div>
         <div className="profile-info">
@@ -144,9 +117,9 @@ const ViewProfilePage = () => {
       <div className="profile-galery">
         <h3>Galería de mi embarazo</h3>
         <div className="profile-grid">
-          {images.map((image) => (
+          {images?.map((image) => (
             <div className="profile-grid-item" key={image.id}>
-              <img src={`/photos/${images.path}`}></img>
+              <img src={`/photos/${image.path}`}></img>
             </div>
           ))}
         </div>
@@ -155,7 +128,7 @@ const ViewProfilePage = () => {
         </Button>
       </div>
       <div>
-        <inptu type="file" onChange={onFileChange}/>
+        <input type="file" onChange={onFileChange} />
         <button onClick={onFileUpload}>Subir</button>
       </div>
     </div>
@@ -163,5 +136,3 @@ const ViewProfilePage = () => {
 };
 
 export default ViewProfilePage;
-
-
