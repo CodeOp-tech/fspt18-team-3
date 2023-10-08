@@ -1,26 +1,39 @@
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import {
-  Form,
-  Link
-} from "react-router-dom";
-import { styled } from "@mui/material/styles";
 import { useState } from "react";
-import MuiInput from "@mui/material/Input";
-import Header from "../components/Header/Header";
-import "./Register.css";
+import { Form, Link as RouterLink } from "react-router-dom";
+import {
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Input as MuiInput,
+} from "@mui/material";
+import { Box } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import "./EditUser.css";
+import { useLoaderData } from "react-router-dom";
+import HeaderUser from "../HeaderUser/HeaderUser";
 
 const Input = styled(MuiInput)`
   width: 42px;
 `;
 
-export default function Register() {
+const EditUser = () => {
+  const user = useLoaderData();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rePassword, setRePassword] = useState("");
-  const [weeks, setWeeks] = useState(0);
-  const [username, setUsername] = useState("");
-  const [babyName, setBabyName] = useState("");
+  const editButtonStyle = {
+    backgroundColor: "transparent",
+    color: "rgb(81, 167, 144)",
+    border: "none",
+    padding: "8px",
+    fontSize: "14px",
+    textTransform: "uppercase"
+  };
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [weeks, setWeeks] = useState();
+  const [username, setUsername] = useState();
+  const [babyName, setBabyName] = useState();
 
   const handleInputChange = (event) => {
     setWeeks(event.target.value === "" ? 0 : Number(event.target.value));
@@ -36,58 +49,44 @@ export default function Register() {
 
   return (
     <Container maxWidth="xs" className="Container">
-      <Header />
-      <Typography variant="h5" component="h1" gutterBottom className="Typography">
-        Crear cuenta
+      <HeaderUser user={user} />
+      <Typography variant="h5" className="Typography">
+        Edita tus datos
       </Typography>
-      <Form method="post" replace className="Form">
+      <Form method="put" replace className="Form">
         <TextField
           label="Nombre de usuario"
           variant="outlined"
           name="username"
-          value={username}
+          defaultValue={username ?? user.user_name}
           onChange={(e) => setUsername(e.target.value)}
           sx={{ mt: 3 }}
           fullWidth
-          required
         />
         <TextField
           label="Email"
           variant="outlined"
           name="email"
-          value={email}
+          defaultValue={email ?? user.mail}
           onChange={(e) => setEmail(e.target.value)}
           sx={{ mt: 3 }}
           fullWidth
-          required
         />
         <TextField
           label="Contraseña"
           variant="outlined"
           type="password"
           name="password"
-          value={password}
+          defaultValue={password ?? user.user_password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{ mt: 3 }}
           fullWidth
-          required
-        />
-        <TextField
-          label="Confirma tu contraseña"
-          variant="outlined"
-          type="password"
-          name="rePassword"
-          value={rePassword}
-          onChange={(e) => setRePassword(e.target.value)}
-          sx={{ mt: 3 }}
-          fullWidth
-          required
         />
         <TextField
           label="Nombre de tu bebé"
           variant="outlined"
           name="babyName"
-          value={babyName}
+          defaultValue={babyName ?? user.baby_name}
           onChange={(e) => setBabyName(e.target.value)}
           sx={{ mt: 3 }}
           fullWidth
@@ -103,7 +102,7 @@ export default function Register() {
             ¿De cuántas semanas estás embarazada?
           </Typography>
           <Input
-            value={weeks}
+            defaultValue={weeks ?? user.weeks_pregnant}
             size="medium"
             name="weeksPregnant"
             onChange={handleInputChange}
@@ -117,16 +116,12 @@ export default function Register() {
             }}
           />
         </Box>
-        <Button variant="contained" type="submit" className="Button">
-          Registrarme
+        <Button style={editButtonStyle} component={RouterLink} to="/profile">
+          Guardar
         </Button>
       </Form>
-      <Box className="DoYouHaveAccount">
-        ¿Ya tienes una cuenta?{" "}
-        <Link to="/login" className="Link">
-          Inicia sesión
-        </Link>
-      </Box>
     </Container>
   );
-}
+};
+
+export default EditUser;

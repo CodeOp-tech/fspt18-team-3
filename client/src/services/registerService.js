@@ -35,7 +35,7 @@ async function registerAction({ request }) {
   })
     .then((response) => response.json())
     .then((userId) => {
-      return {message: "The user was successfully signed up", userId}
+      return { message: "The user was successfully signed up", userId };
     })
     .catch((error) => {
       console.error(error);
@@ -44,8 +44,7 @@ async function registerAction({ request }) {
       };
     });
 
-  const redirectTo = formData.get("redirectTo");
-  return redirect(redirectTo || "/login");
+  return redirect("/login");
 }
 
 export { registerAction };

@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import logo_babybump from "../../assets/logo_babybump.png";
 import "./ViewProfilePage.css";
 import img1 from "../../images/img1.jpg";
 import img2 from "../../images/img2.jpg";
 import img3 from "../../images/img3.jpg";
 import { Link as RouterLink } from "react-router-dom";
 import Button from "@mui/material/Button";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import AuthStatus from "../AuthStatus/AuthStatus";
 import axios from "axios";
-import { getUser, countWeeks, countWeeksLeft, getWeekId } from "../../services/pregnancyService";
+import { getUser, countWeeks, countWeeksLeft } from "../../services/pregnancyService";
+import HeaderUser from "../HeaderUser/HeaderUser";
 
 const ViewProfilePage = () => {
   const [user, setUser] = useState();
@@ -37,7 +35,6 @@ const ViewProfilePage = () => {
     const fetchData = async () => {
       try {
         const user = await getUser();
-        console.log(user)
         setUser(user);
         await getPhotos();
       } catch (error) {
@@ -85,21 +82,7 @@ const ViewProfilePage = () => {
   return (
     <div>
       <div className="profile-text">
-        <div className="profile-logo-image__text">
-          <div className="profile-logo">
-            <img src={logo_babybump}></img>
-          </div>
-          <div>
-            <div className="profile-photo">
-              {user?.photo_url ? (
-                <img src={user.photo_url}></img>
-              ) : (
-                <AccountCircleIcon sx={{ fontSize: "100px" }} />
-              )}
-            </div>
-            <AuthStatus />
-          </div>
-        </div>
+        <HeaderUser user={user} />
         <div className="profile-info">
           {user ? <h2>{user.user_name}</h2> : <h2>Desconocido</h2>}
           <p>Tu bebé ya tiene {countWeeks(user)} semanas.</p>
@@ -109,7 +92,7 @@ const ViewProfilePage = () => {
           <Button variant="outlined" component={RouterLink} to="/week-view">
             Saber más sobre mi embarazo
           </Button>
-          <Button variant="outlined" type="button">
+          <Button variant="outlined" type="button" component={RouterLink} to="/edit">
             Editar
           </Button>
         </div>
