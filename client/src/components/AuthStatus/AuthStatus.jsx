@@ -1,23 +1,22 @@
 import { useRouteLoaderData, useFetcher } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 function AuthStatus() {
-  // Recupera el usuario, si existe, de la ruta "root" en la función "loader" desde main.jsx
-  let data = useRouteLoaderData("root");
+  let token = useRouteLoaderData("root");
   let fetcher = useFetcher();
 
-  if (!data.user) {
+  if (!token) {
     return <p>No estás autenticado</p>;
   }
 
-  let isLoggingOut = fetcher.formData !== null;
+  let isLoggingOut = fetcher.formData !== undefined;
 
   return (
-    <div>
-      <p>Bienvenido {data.user.username}!</p>
+    <div className="logoutWrapper">
       <fetcher.Form method="post" action="/logout">
-        <button type="submit" disabled={isLoggingOut}>
+        <Button type="submit" size="small" variant="outlined" disabled={isLoggingOut} >
           {isLoggingOut ? "Logging out...." : "Log out"}
-        </button>
+        </Button>
       </fetcher.Form>
     </div>
   );
