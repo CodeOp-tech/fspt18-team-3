@@ -52,7 +52,7 @@ const Gallery = ({userId, weekId}) => {
         }
       });
       console.log(res);
-      getPhotos();
+      getPhotos(userId);
     }catch(err){
       console.log(err);
     }

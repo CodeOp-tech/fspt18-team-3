@@ -6,7 +6,7 @@ import {
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import MuiInput from "@mui/material/Input";
-import Header from "../components/Header/Header";
+import HeaderUser from "../components/HeaderUser/HeaderUser";
 import "./Register.css";
 
 const Input = styled(MuiInput)`
@@ -36,7 +36,7 @@ export default function Register() {
 
   return (
     <Container maxWidth="xs" className="Container">
-      <Header />
+      <HeaderUser />
       <Typography variant="h5" component="h1" gutterBottom className="Typography">
         Crear cuenta
       </Typography>

@@ -10,7 +10,7 @@ const mime = require('mime-types');
 
 
 /*GET PHOTOS*/
-//router.get("/:user_id", getPhotos());
+
 
 const getPhotos = async (req, res) => {
   try{
@@ -21,7 +21,7 @@ const getPhotos = async (req, res) => {
   }
 }
 
-
+router.get("/:user_id", getPhotos);
 
 /* POST PHOTO */
 router.post("/:user_id/:week_id", upload.single("photofile"), async function(req, res){
@@ -38,7 +38,7 @@ router.post("/:user_id/:week_id", upload.single("photofile"), async function(req
     try{
       await fs.rename(tmp_path, target_path);
       await db(`INSERT INTO posts (user_id, week_id, path) VALUES (${req.params.user_id}, ${req.params.week_id}, '${photoname}') ;`)
-     // getPhotos(req,res)
+      getPhotos(req,res)
     }catch(err){
       res.status(500).send({ error: err.message });
     }
