@@ -3,7 +3,7 @@ import {
   Form,
   Link as RouterLink,
 } from "react-router-dom";
-import Header from "../components/Header/Header";
+import HeaderUser from "../components/HeaderUser/HeaderUser";
 import "./Login.css"; 
 
 export default function Login() {
@@ -25,7 +25,7 @@ export default function Login() {
 
   return (
     <Container maxWidth="xs"  className="Container">
-      <Header />
+      <HeaderUser />
       <Typography variant="h5" component="h1" gutterBottom className="Typography">
         Iniciar sesión
       </Typography>
