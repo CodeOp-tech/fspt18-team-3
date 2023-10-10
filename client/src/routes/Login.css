@@ -1,15 +1,29 @@
+body {
+  font-family: 'Roboto', sans-serif; 
+}
+
 .Container {
-    max-width: 380px;
-    margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 380px;
+  margin: 2rem auto;
   }
   
   .Typography {
     text-align: center;
+    color: rgb(240, 149, 149);
   }
   
   .TextField {
     margin-top: 1.5rem;
     width: 100%;
+  }
+
+  .Container .Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .Container .Form .Button {
@@ -17,12 +31,13 @@
     background-color: rgb(240, 149, 149);
     color: rgb(255, 255, 255);
     border-color: pink;
-    padding: 8px; /* Ajusta el espacio interno del botón */
-    font-size: 14px; /* Ajusta el tamaño de fuente del botón */
+    padding: 8px; 
+    font-size: 14px; 
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    max-width: 150px; /* Ajusta el ancho máximo del botón */
+    max-width: 150px; 
     width: 100%; 
+    align-self: center;
   }
   
   .Container .Form .Button:hover {
@@ -41,6 +56,7 @@
   .SignUpText {
     text-align: center;
     margin-top: 1rem;
+    color: rgb(240, 149, 149);
   }
   
   .Container .Form .ButtonSignUp {

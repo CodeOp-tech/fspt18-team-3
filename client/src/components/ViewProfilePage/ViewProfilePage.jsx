@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import "./ViewProfilePage.css";
 import { Link as RouterLink } from "react-router-dom";
 import Button from "@mui/material/Button";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useRouteLoaderData } from "react-router-dom";
 import Gallery from "../Gallery/Gallery.jsx";
 import HeaderUser from "../HeaderUser/HeaderUser";
 import {
