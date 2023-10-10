@@ -7,14 +7,14 @@ import './HeaderUser.css'
 const HeaderUser = ({user}) => {
 
   return (
-    <div className="profile-logo-image__text">
-      <div className="profile-logo">
-        <img src={logo_babybump}></img>
+    <div className="header-user-container">
+      <div className="logo">
+        <img src={logo_babybump} alt="Logo BabyBump"></img>
       </div>
-      <div>
+      <div className="profile-info">
         <div className="profile-photo">
           {user?.photo_url ? (
-            <img src={user.photo_url}></img>
+            <img src={user.photo_url} alt="Profile"></img>
           ) : (
             <AccountCircleIcon sx={{ fontSize: "100px" }} />
           )}

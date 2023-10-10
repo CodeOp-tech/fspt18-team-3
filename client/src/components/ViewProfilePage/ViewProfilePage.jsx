@@ -34,6 +34,7 @@ const ViewProfilePage = () => {
   }
   console.log(user)
   return (
+    <div className="view-profile-container">
     <div className="profile-text">
       <HeaderUser user={user} />
       <div className="profile-info">
@@ -50,6 +51,7 @@ const ViewProfilePage = () => {
         </Button>
       </div>
       <Gallery userId={user.id} weekId={getWeekId(user)} />
+    </div>
     </div>
   );
 };
