@@ -1,12 +1,12 @@
 .logoutWrapper {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Mueve el contenido a la derecha */
+    margin-left: auto; 
   }
   
   .logoutWrapper p {
     margin: 0;
-    padding-right: 10px; /* Espacio entre el texto y el botón */
+    padding-right: 10px; 
   }
   
   .logoutWrapper .MuiButton-root {
