@@ -1,7 +1,6 @@
 import React from "react";
 import AuthStatus from "../AuthStatus/AuthStatus";
 import logo_babybump from "../../assets/logo_babybump.png";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import './HeaderUser.css'
 
 const HeaderUser = ({user}) => {
@@ -13,11 +12,8 @@ const HeaderUser = ({user}) => {
       </div>
       <div className="profile-info">
         <div className="profile-photo">
-          {user?.photo_url ? (
-            <img src={user.photo_url} alt="Profile"></img>
-          ) : (
-            <AccountCircleIcon sx={{ fontSize: "100px" }} />
-          )}
+          {user?.photo_url && user?.photo_url !== 'undefined'  ?
+            <img src={user.photo_url} alt="Profile"></img> : <></>}
         </div>
         <AuthStatus />
       </div>

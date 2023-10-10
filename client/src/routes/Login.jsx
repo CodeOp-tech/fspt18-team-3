@@ -2,11 +2,16 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import {
   Form,
   Link as RouterLink,
+  Navigate,
+  useLoaderData
 } from "react-router-dom";
 import HeaderUser from "../components/HeaderUser/HeaderUser";
 import "./Login.css"; 
 
 export default function Login() {
+
+  const token = useLoaderData()
+
   const signUpButtonStyle = {
     backgroundColor: "transparent",
     color: "rgb(81, 167, 144)",
@@ -25,6 +30,7 @@ export default function Login() {
 
   return (
     <Container maxWidth="xs"  className="Container">
+      {token && <Navigate to={"/profile"} replace/>}
       <HeaderUser />
       <Typography variant="h5" component="h1" gutterBottom className="Typography">
         Iniciar sesión

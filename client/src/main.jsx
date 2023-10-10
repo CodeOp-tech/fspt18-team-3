@@ -12,7 +12,7 @@ import Login from "./routes/Login.jsx";
 import Register from "./routes/Register.jsx";
 import ViewProfilePage from "./components/ViewProfilePage/ViewProfilePage";
 import WeekView from "./components/WeekView/WeekView";
-import { registerAction } from "./services/registerService.js";
+import { registerAction, registerLoader } from "./services/registerService.js";
 import { loginAction, loginLoader } from "./services/loginService.js";
 import { logoutAction } from "./services/logoutService.js";
 import EditUser from "./components/EditUser/EditUser.jsx";
@@ -24,7 +24,6 @@ const router = createBrowserRouter([
     id: "root",
     path: "/",
     loader() {
-      // root route provides the user, if logged in
       const token = localStorage.getItem("token");
       if (!token) return redirect("/login");
       return token;
@@ -61,6 +60,7 @@ const router = createBrowserRouter([
   {
     path: "/register",
     action: registerAction,
+    loader: registerLoader,
     Component: Register,
   },
 ]);

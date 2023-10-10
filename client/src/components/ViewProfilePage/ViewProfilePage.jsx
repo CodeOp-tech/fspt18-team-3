@@ -29,10 +29,11 @@ const ViewProfilePage = () => {
   const getWeekId = (user) => {
     return countWeeks(user) - 2;
   };
+  
   if (!user) {
     return null;
   }
-  console.log(user)
+
   return (
     <div className="view-profile-container">
     <div className="profile-text">

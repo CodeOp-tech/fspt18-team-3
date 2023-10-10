@@ -38,7 +38,6 @@ async function registerAction({ request }) {
       return { message: "The user was successfully signed up", userId };
     })
     .catch((error) => {
-      console.error(error);
       return {
         error: "Invalid registration attempt",
       };
@@ -47,4 +46,10 @@ async function registerAction({ request }) {
   return redirect("/login");
 }
 
-export { registerAction };
+const registerLoader = () => {
+  const token = localStorage.getItem("token")
+  if (token) return redirect("/profile")
+  return null
+}
+
+export { registerAction, registerLoader };

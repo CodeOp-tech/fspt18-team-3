@@ -1,16 +1,16 @@
-import { useRouteLoaderData, useFetcher } from "react-router-dom";
+import { useFetcher } from "react-router-dom";
 import Button from "@mui/material/Button";
 import './AuthStatus.css'
 
 function AuthStatus() {
-  let token = useRouteLoaderData("root");
-  let fetcher = useFetcher();
+  const token = localStorage.getItem("token")
+  const fetcher = useFetcher();
 
   if (!token) {
     return <p>No estás autenticado</p>;
   }
 
-  let isLoggingOut = fetcher.formData !== undefined;
+  const isLoggingOut = fetcher.formData !== undefined;
 
   return (
     <div className="logoutWrapper">

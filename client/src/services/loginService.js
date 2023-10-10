@@ -14,6 +14,8 @@ async function loginAction({ request }) {
   })
     .then((response) => response.json())
     .then((authData) => {
+      if (authData.error) throw Error(authData.error) 
+
       if (authData.token) {
         localStorage.setItem("token", authData.token);
         return redirect("/profile");
