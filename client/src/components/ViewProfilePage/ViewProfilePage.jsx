@@ -46,7 +46,7 @@ const ViewProfilePage = () => {
         <Button variant="outlined" component={RouterLink} to="/week-view">
           Saber más sobre mi embarazo
         </Button>
-        <Button variant="outlined" type="button">
+        <Button component={RouterLink} to="/edit" variant="outlined" type="button"> 
           Editar
         </Button>
       </div>
