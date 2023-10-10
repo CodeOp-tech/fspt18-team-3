@@ -58,8 +58,8 @@ CREATE TABLE posts (
         user_id INT NOT NULL,
         week_id INT NOT NULL,
         path VARCHAR(250) NOT NULL,
-        photo_description VARCHAR(250) NOT NULL,
-        date_posted DATE NOT NULL,
+        photo_description VARCHAR(250),
+        date_posted DATE,
         FOREIGN KEY (user_id) REFERENCES users(id),
         FOREIGN KEY (week_id) REFERENCES weeks(id)
 );

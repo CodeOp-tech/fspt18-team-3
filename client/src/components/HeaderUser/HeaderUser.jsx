@@ -1,7 +1,7 @@
 import logo_babybump from "../../assets/logo_babybump.png";
-import "./Header.css";
+import "./HeaderUser.css";
 
-function Header() {
+function HeaderUser() {
 
   return (
     <>
@@ -15,4 +15,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderUser;
