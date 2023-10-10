@@ -15,15 +15,14 @@ router.post("/", async function (req, res) {
 
   try {
     const result = await db(sql);
-
     const user = result.data[0];
-
+    
     if (user) {
       let passwordMatches = await bcrypt.compare(
         password,
         result.data[0].user_password
       );
-
+        
       if (passwordMatches) {
         const payload = { user_id: result.data[0].id };
         const token = jwt.sign(payload, SECRET_KEY);

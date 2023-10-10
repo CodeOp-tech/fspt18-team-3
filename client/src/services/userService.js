@@ -1,5 +1,6 @@
-async function updateUserAction ({ request }) {
-  console.log('here!!!')
+import { redirect } from "react-router-dom";
+
+async function updateUserAction({ request }) {
   let formData = await request.formData();
 
   let email = formData.get("email");
@@ -17,10 +18,14 @@ async function updateUserAction ({ request }) {
   };
 
   try {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
     const response = await fetch(`http://localhost:5000/users/user`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(userUpdateData),
     });
@@ -29,12 +34,13 @@ async function updateUserAction ({ request }) {
       throw new Error("Error retrieving the updated user");
     }
 
-    const [user] = await response.json();
-    return user;
+    const [updatedUser] = await response.json();
+    console.log('updatedUser', updatedUser)
+    return redirect("/profile");
   } catch (error) {
     console.error("Error fetching user:", error);
     throw error;
   }
-};
+}
 
 export { updateUserAction };

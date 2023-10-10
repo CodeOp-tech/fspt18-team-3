@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Link as RouterLink } from "react-router-dom";
+import { Form } from "react-router-dom";
 import {
   Button,
   Container,
@@ -116,7 +116,7 @@ const EditUser = () => {
             }}
           />
         </Box>
-        <Button style={editButtonStyle} component={RouterLink} to="/profile">
+        <Button type="submit" style={editButtonStyle} >
           Guardar
         </Button>
       </Form>

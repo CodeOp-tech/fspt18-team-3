@@ -25,7 +25,6 @@ app.use(express.static(path.join(__dirname, "client/dist")));
 // serve static images from public/img
 app.use(express.static("public"));
 
-
 app.use('/users', usersRouter);
 app.use('/weeks', weeksRouter);
 app.use('/photos', photosRouter);

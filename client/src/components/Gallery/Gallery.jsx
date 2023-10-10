@@ -1,38 +1,29 @@
 import { useEffect, useState } from "react";
-import img1 from "../../images/img1.jpg";
-import img2 from "../../images/img2.jpg";
-import img3 from "../../images/img3.jpg";
-import Button from "@mui/material/Button";
-import { useRouteLoaderData } from "react-router-dom";
-import axios, {isCancel, AxiosError} from 'axios';
+import axios from "axios";
 import "./Gallery.css";
 
-const Gallery = ({userId, weekId}) => {
+const Gallery = ({ userId, weekId }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [images, setImages] = useState([
-    {
-      id: 1,
-      image: img1,
-    },
-    {
-      id: 2,
-      image: img2,
-    },
-    {
-      id: 3,
-      image: img3,
-    },
-  ]);
+  const [images, setImages] = useState([]);
+
+  const uploadFileButtonStyle = {
+    backgroundColor: "transparent",
+    color: "rgb(81, 167, 144)",
+    border: "none",
+    borderRadius: "8px",
+    padding: "8px",
+    fontSize: "14px",
+    textTransform: "uppercase",
+    cursor: "pointer",
+  };
 
   useEffect(() => {
-    getPhotos(userId); 
-    
-  }, []); 
+    getPhotos(userId);
+  }, []);
 
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
-
 
   /*const onFileChange = (event) => {
     setSelectedFile({
@@ -42,31 +33,35 @@ const Gallery = ({userId, weekId}) => {
     });
   };*/
 
-  const onFileUpload = async() =>{
+  const onFileUpload = async () => {
     const formData = new FormData();
     formData.append("photofile", selectedFile, selectedFile.name);
 
-    try{
-      const res = await axios.post(`http://localhost:5000/photos/${userId}/${weekId}`, formData,{
-        headers:{
-          "Content-Type":"multipart-form/data",
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/photos/${userId}/${weekId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart-form/data",
+          },
         }
-      });
+      );
       console.log(res);
       getPhotos(userId);
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
-  const getPhotos = async(userId) => {
-    try{
-      const res = await axios.get(`http://localhost:5000/photos/${userId}`)
-      setImages(res.data);
-    }catch(err){
-      console.log(err)
+  const getPhotos = async (userId) => {
+    try {
+      const res = await axios.get(`http://localhost:5000/photos/${userId}`);
+      if (res.data?.length) setImages(res.data);
+    } catch (err) {
+      console.log(err.message);
     }
-  }
+  };
 
   return (
     <div>
@@ -75,22 +70,21 @@ const Gallery = ({userId, weekId}) => {
         <div className="profile-grid">
           {images.map((image) => (
             <div className="profile-grid-item" key={image.id}>
-              <img src={`http://localhost:5000/photos/${image.path}`}></img>
+              {image.path ? (
+                <img src={`http://localhost:5000/photos/${image.path}`} />
+              ) : (
+                <img src={image.name} />
+              )}
             </div>
           ))}
         </div>
-        <Button variant="outlined" type="button">
-          Añade otra imagen
-        </Button>
       </div>
       <div>
-        <input type="file" onChange={onFileChange}/>
-        <button onClick={onFileUpload}>Subir</button>
+        <input type="file" onChange={onFileChange} className="select-item-button"/>
+        <button onClick={onFileUpload} className="button-upload">Subir</button>
       </div>
     </div>
   );
 };
 
 export default Gallery;
-
-

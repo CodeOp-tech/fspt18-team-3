@@ -45,12 +45,14 @@ router.get("/user", userShouldBeLoggedIn, async function (req, res) {
 });
 
 /*PUT USER*/
-router.put("/user", userShouldBeLoggedIn, async (req, res) => {
+router.put("/user", userShouldBeLoggedIn, async function (req, res) {
+
   try {
     const hashedPassword = await hashPassword(req.body.user_password);
     const result = await db(`SELECT * FROM users WHERE id = ${req.user_id};`);
+    const userFound = result.data[0]
 
-    if (!result) {
+    if (!userFound) {
       res.status(404).send({ message: "User not found" });
       return;
     }
@@ -62,10 +64,10 @@ router.put("/user", userShouldBeLoggedIn, async (req, res) => {
     const updatedUser = await db(
       `SELECT * FROM users WHERE id = ${req.user_id};`
     );
-      console.log('Updated user!! ',updatedUser.data)
+
     res.send(updatedUser.data);
   } catch (err) {
-    res.status(500).send({ error: err.message });
+    res.status(500).send({ error: "An error occurred while updating user information" });
   }
 });
 
