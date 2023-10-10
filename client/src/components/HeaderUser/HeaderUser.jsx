@@ -1,18 +1,28 @@
+import React from "react";
+import AuthStatus from "../AuthStatus/AuthStatus";
 import logo_babybump from "../../assets/logo_babybump.png";
-import "./HeaderUser.css";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import './HeaderUser.css'
 
-function HeaderUser() {
+const HeaderUser = ({user}) => {
 
   return (
-    <>
-      <div>
-        <a>
-          <img src={logo_babybump} className="logo" alt="App logo" />
-        </a>
+    <div className="header-user-container">
+      <div className="logo">
+        <img src={logo_babybump} alt="Logo BabyBump"></img>
       </div>
-      <h1>Baby Bump</h1>
-    </>
+      <div className="profile-info">
+        <div className="profile-photo">
+          {user?.photo_url ? (
+            <img src={user.photo_url} alt="Profile"></img>
+          ) : (
+            <AccountCircleIcon sx={{ fontSize: "100px" }} />
+          )}
+        </div>
+        <AuthStatus />
+      </div>
+    </div>
   );
-}
+};
 
 export default HeaderUser;

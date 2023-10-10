@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 
-async function loginAction({ request }) { 
+async function loginAction({ request }) {
   let formData = await request.formData();
   let email = formData.get("email");
   let password = formData.get("password");
@@ -14,22 +14,20 @@ async function loginAction({ request }) {
   })
     .then((response) => response.json())
     .then((authData) => {
-      console.log(authData)
-      localStorage.setItem('token', authData.token)
-      let redirectTo = formData.get("redirectTo");
-    return redirect(redirectTo || `/profile`);
+      if (authData.token) {
+        localStorage.setItem("token", authData.token);
+        return redirect("/profile");
+      }
     })
     .catch((error) => {
       return {
         error: error.message,
       };
     });
-
-    
 }
+
 async function loginLoader() {
-  return localStorage.getItem('token')
-  
+  return localStorage.getItem("token");
 }
 
 export { loginAction, loginLoader };

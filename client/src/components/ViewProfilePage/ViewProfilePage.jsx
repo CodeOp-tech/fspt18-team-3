@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import logo_babybump from "../../assets/logo_babybump.png";
 import "./ViewProfilePage.css";
 import { Link as RouterLink } from "react-router-dom";
 import Button from "@mui/material/Button";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useRouteLoaderData } from "react-router-dom";
 import Gallery from "../Gallery/Gallery.jsx";
 import HeaderUser from "../HeaderUser/HeaderUser";
 import {
@@ -20,7 +17,6 @@ const ViewProfilePage = () => {
     const fetchData = async () => {
       try {
         const user = await getUser();
-        console.log(user);
         setUser(user);
       } catch (error) {
         console.error("Error fetching user or photos:", error);
@@ -38,6 +34,7 @@ const ViewProfilePage = () => {
   }
   console.log(user)
   return (
+    <div className="view-profile-container">
     <div className="profile-text">
       <HeaderUser user={user} />
       <div className="profile-info">
@@ -49,11 +46,12 @@ const ViewProfilePage = () => {
         <Button variant="outlined" component={RouterLink} to="/week-view">
           Saber más sobre mi embarazo
         </Button>
-        <Button variant="outlined" type="button">
+        <Button component={RouterLink} to="/edit" variant="outlined" type="button"> 
           Editar
         </Button>
       </div>
       <Gallery userId={user.id} weekId={getWeekId(user)} />
+    </div>
     </div>
   );
 };

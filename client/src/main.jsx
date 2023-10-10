@@ -2,7 +2,11 @@ import React from "react";
 import * as ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect,
+} from "react-router-dom";
 import ErrorPage from "./Error-page.jsx";
 import Login from "./routes/Login.jsx";
 import Register from "./routes/Register.jsx";
@@ -11,6 +15,9 @@ import WeekView from "./components/WeekView/WeekView";
 import { registerAction } from "./services/registerService.js";
 import { loginAction, loginLoader } from "./services/loginService.js";
 import { logoutAction } from "./services/logoutService.js";
+import EditUser from "./components/EditUser/EditUser.jsx";
+import { getUser } from "./services/pregnancyService.js";
+import { updateUserAction } from "./services/userService.js";
 
 const router = createBrowserRouter([
   {
@@ -18,9 +25,9 @@ const router = createBrowserRouter([
     path: "/",
     loader() {
       // root route provides the user, if logged in
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
       if (!token) return redirect("/login");
-      return token
+      return token;
     },
     Component: App,
     errorElement: <ErrorPage />,
@@ -36,8 +43,14 @@ const router = createBrowserRouter([
       {
         Component: WeekView,
         path: "week-view",
-      }
-    ]
+      },
+      {
+        path: "edit",
+        loader: async () => await getUser(),
+        action: updateUserAction,
+        Component: EditUser
+      },
+    ],
   },
   {
     path: "/login",
@@ -49,7 +62,7 @@ const router = createBrowserRouter([
     path: "/register",
     action: registerAction,
     Component: Register,
-  }
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

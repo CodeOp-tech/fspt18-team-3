@@ -1,12 +1,10 @@
-const options = () => {
+const callOptions = (method) => {
   const token = localStorage.getItem("token");
 
-  if (!token) {
-    console.log("Access token not found in localStorage.");
-    return;
-  }
+  if (!token) return;
+
   return {
-    method: "GET",
+    method,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -15,14 +13,17 @@ const options = () => {
 
 const getUser = async () => {
   try {
-    const response = await fetch(`http://localhost:5000/users/user`, options());
+    const response = await fetch(
+      `http://localhost:5000/users/user`,
+      callOptions("GET")
+    );
 
     if (!response.ok) {
       throw new Error("Error retrieving the user");
     }
 
-    const user = await response.json();
-    return user[0];
+    const [user] = await response.json();
+    return user;
   } catch (error) {
     console.error("Error fetching user:", error);
     throw error;
@@ -31,8 +32,11 @@ const getUser = async () => {
 
 const getWeeks = async () => {
   try {
-    const weeks = await fetchUserAndMakeCalculation(countWeeks)
-    const response = await fetch(`http://localhost:5000/weeks/${weeks}`, options());
+    const weeks = await fetchUserAndMakeCalculation(countWeeks);
+    const response = await fetch(
+      `http://localhost:5000/weeks/${weeks}`,
+      callOptions("GET")
+    );
 
     if (!response.ok) {
       throw new Error("Error fetching weeks");
@@ -48,8 +52,11 @@ const getWeeks = async () => {
 
 const getSymptoms = async () => {
   try {
-    const weekId = await fetchUserAndMakeCalculation(getWeekId)
-    const response = await fetch(`http://localhost:5000/weeks/${weekId}/symptoms`, options());
+    const weekId = await fetchUserAndMakeCalculation(getWeekId);
+    const response = await fetch(
+      `http://localhost:5000/weeks/${weekId}/symptoms`,
+      callOptions("GET")
+    );
 
     if (!response.ok) {
       throw new Error("Error fetching symptoms");
@@ -65,8 +72,11 @@ const getSymptoms = async () => {
 
 const getAdvice = async () => {
   try {
-    const weekId = await fetchUserAndMakeCalculation(getWeekId)
-    const response = await fetch(`http://localhost:5000/weeks/${weekId}/advice`, options());
+    const weekId = await fetchUserAndMakeCalculation(getWeekId);
+    const response = await fetch(
+      `http://localhost:5000/weeks/${weekId}/advice`,
+      callOptions("GET")
+    );
 
     if (!response.ok) {
       throw new Error("Error fetching advice");
@@ -80,7 +90,6 @@ const getAdvice = async () => {
   }
 };
 
-
 const countWeeks = (user) => {
   const dateToday = new Date().toISOString().slice(0, 10);
   const simpleDate = new Date(dateToday);
@@ -89,15 +98,9 @@ const countWeeks = (user) => {
   return Math.round(weeksAdded + user?.weeks_pregnant);
 };
 
-const getWeekId = (user) => {
-  let weekId = countWeeks(user) - 2;
-  return weekId;
-};
+const getWeekId = (user) => countWeeks(user) - 2;
 
-const countWeeksLeft = () => {
-  return 40 - countWeeks();
-};
-
+const countWeeksLeft = (user) => 40 - countWeeks(user);
 
 const fetchUserAndMakeCalculation = async (callback) => {
   try {
@@ -108,6 +111,12 @@ const fetchUserAndMakeCalculation = async (callback) => {
   }
 };
 
-
-
-export { getAdvice, getSymptoms, getUser, getWeeks, countWeeks, countWeeksLeft, getWeekId };
+export {
+  getAdvice,
+  getSymptoms,
+  getUser,
+  getWeeks,
+  countWeeks,
+  countWeeksLeft,
+  getWeekId,
+};

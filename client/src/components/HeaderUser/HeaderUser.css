@@ -1,35 +1,30 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #eff6fd; 
-  color: #F45496;
-  margin: 0;
-  padding: 0;
+.header-user-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .logo {
   max-width: 100px;
-  margin-top: 10px; /* Mover el logo arriba */
+  margin-right: 10px;
 }
 
-h1 {
-  font-size: 24px;
-  color: #F45496;
-  margin-top: 10px; /* Mover el título arriba */
+.logo img {
+  max-width: 100%;
 }
 
-.card {
-  background-color: #eff6fd;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 300px;
-  text-align: center;
-  margin-top: 20px;
+.profile-photo {
+  max-width: 30px; 
+  max-height: 30px; 
+  border-radius: 50%;
+  margin-bottom: 70px;
 }
 
-.card p {
-  color: #8e8888;
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }

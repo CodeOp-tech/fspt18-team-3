@@ -5,6 +5,7 @@ import img3 from "../../images/img3.jpg";
 import Button from "@mui/material/Button";
 import { useRouteLoaderData } from "react-router-dom";
 import axios, {isCancel, AxiosError} from 'axios';
+import "./Gallery.css";
 
 const Gallery = ({userId, weekId}) => {
   const [selectedFile, setSelectedFile] = useState(null);

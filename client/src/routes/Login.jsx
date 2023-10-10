@@ -58,7 +58,7 @@ export default function Login() {
         <Button 
           style={signUpButtonStyle}
           component={RouterLink} 
-          to="register" 
+          to="/register" 
           >
           Regístrate
         </Button>

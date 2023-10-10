@@ -1,0 +1,32 @@
+.logoutWrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto; 
+  }
+  
+  .logoutWrapper p {
+    margin: 0;
+    padding-right: 10px; 
+  }
+  
+  .logoutWrapper .MuiButton-root {
+    background-color: rgb(240, 149, 149);
+    color: rgb(255, 255, 255);
+    border-color: pink;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 5px 15px;
+  }
+  
+  .logoutWrapper .MuiButton-root:hover {
+    background-color: rgb(184, 219, 184);
+    color: white;
+    border-color: rgb(81, 167, 144);
+  }
+  
+  .logoutWrapper .MuiButton-root:active {
+    background-color: rgb(252, 103, 128);
+    color: white;
+    border-color: pink;
+    outline: none;
+  }
