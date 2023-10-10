@@ -1,5 +1,6 @@
 import { useRouteLoaderData, useFetcher } from "react-router-dom";
 import Button from "@mui/material/Button";
+import './AuthStatus.css'
 
 function AuthStatus() {
   let token = useRouteLoaderData("root");
